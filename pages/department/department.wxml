@@ -1,0 +1,10 @@
+<!--pages/department/department.wxml-->
+<text>pages/department/department.wxml</text>
+<van-grid column-num="3" gutter="{{ 10 }}">
+  <van-grid-item content-class="my-grid-item" icon="photo-o" text="文字" wx:for="{{ 8 }}" />
+</van-grid>
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item wx:for="{{ list }}" wx:key="index" icon="{{ item.icon }}">
+    {{item.text}}
+  </van-tabbar-item>
+</van-tabbar>
