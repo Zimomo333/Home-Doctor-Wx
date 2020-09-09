@@ -2,6 +2,7 @@
 Page({
   data: {
     active: 1,
+    value: '',
     list: [
       {
         "url": "/pages/index/index",
