@@ -1,0 +1,2 @@
+<!--pages/doctor/doctor.wxml-->
+<text>{{ department }}</text>

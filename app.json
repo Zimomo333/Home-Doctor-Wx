@@ -4,7 +4,7 @@
     "pages/logs/logs",
     "pages/department/department",
     "pages/my/my",
-    "pages/test/test"
+    "pages/doctor/doctor"
   ],
   "window": {
     "backgroundTextStyle": "light",
