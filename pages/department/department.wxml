@@ -8,9 +8,10 @@
     content-class="my-grid-item"
     icon="{{ item.icon }}"
     text="{{ item.text }}"
+    wx:key="index"
     wx:for="{{ department }}"
     link-type="navigateTo"
-    url="/pages/doctor/doctor?department={{ item.name }}"
+    url="/pages/doctorList/doctorList?department={{ item.name }}"
   />
 </van-grid>
 <van-tabbar active="{{ active }}" bind:change="onChange">

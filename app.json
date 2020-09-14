@@ -4,6 +4,7 @@
     "pages/logs/logs",
     "pages/department/department",
     "pages/my/my",
+    "pages/doctorList/doctorList",
     "pages/doctor/doctor"
   ],
   "window": {

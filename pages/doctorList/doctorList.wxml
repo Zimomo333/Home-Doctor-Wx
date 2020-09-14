@@ -1,0 +1,29 @@
+<!--pages/doctorList/doctorList.wxml-->
+<van-search value="{{ search }}" placeholder="疾病、医院、科室、医生名" />
+<van-dropdown-menu>
+  <van-dropdown-item value="{{ sort }}" options="{{ sortOption }}" />
+  <van-dropdown-item id="item" title="{{ areaName }}" >
+    <van-area
+      area-list="{{ areaList }}"
+      columns-num="{{ 2 }}"
+      title="省份城市"
+      value="{{ areaSelect }}"
+      bind:confirm="areaConfirm"
+      bind:cancel="areaCancel"
+    />
+  </van-dropdown-item>
+</van-dropdown-menu>
+<text>{{ department }}</text>
+<van-card
+  desc="描述信息"
+  title="{{ item.name }}"
+  thumb="{{ item.imageUrl }}"
+  wx:key="index"
+  wx:for="{{ doctors }}"
+  id="{{ item.id }}"
+  bindtap="jump"
+>
+  <view slot="price">
+      图文:￥{{ item.textPrice }}　电话:￥{{ item.telPrice }}
+  </view>
+</van-card>
