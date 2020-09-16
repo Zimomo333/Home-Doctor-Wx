@@ -1,2 +1,19 @@
 <!--pages/doctor/doctor.wxml-->
-<text>{{doctor_id}}</text>
+<van-image width="100" height="100" radius="10" src="{{ doctorInfo.imageUrl }}" />
+<view class="info">
+  <text id="name">{{ doctorInfo.name }}</text>
+  <text id="department">
+    {{ doctorInfo.department }}　{{ doctorInfo.position }}
+    {{ doctorInfo.hospital }}
+  </text>
+  <text id="introduction">{{ doctorInfo.introduction }}</text>
+</view>
+<view class="count">
+  <van-icon name="star" color="orange" size="20px" />
+  <text> {{doctorInfo.rate}}</text>
+  <text style="color:gray;margin-left:30px;">{{doctorInfo.total_consult}}</text> 总回答
+</view>
+<van-goods-action>
+  <van-goods-action-button text="图文咨询 ￥{{doctorInfo.text_consult_price}}" type="warning" bind:click="onClickText" />
+  <van-goods-action-button text="电话咨询 ￥{{doctorInfo.phone_consult_price}}" bind:click="onClickPhone" />
+</van-goods-action>
