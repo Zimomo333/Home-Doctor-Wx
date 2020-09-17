@@ -1,0 +1,32 @@
+<view class="container" style="height:{{editorHeight}}px;">
+  <editor
+    id="editor"
+    class="ql-container"
+    placeholder="{{placeholder}}"
+    bindstatuschange="onStatusChange"
+    bindready="onEditorReady"
+    show-img-size="true"
+    show-img-toolbar="true"
+    show-img-resize="true"
+  >
+  </editor>
+</view>
+
+<view class="toolbar" catchtouchend="format" hidden="{{keyboardHeight > 0 ? false : true}}" style="bottom: {{isIOS ? keyboardHeight : 0}}px">
+  <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
+  <i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
+  <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+  <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+  <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+  <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
+  <i class="iconfont icon-fengexian" catchtouchend="insertDivider"></i>
+  <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
+  <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
+  <i class="iconfont icon-clearedformat" catchtouchend="removeFormat"></i>
+  <i class="iconfont icon-clearup" catchtouchend="openConfirm"></i>
+</view>
+
+<mp-dialog title="确认清空所有内容？" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{ [{text: '取消'}, {text: '确定'}] }}">
+</mp-dialog>
+
+<button bindtap="clickLogText">提交</button>

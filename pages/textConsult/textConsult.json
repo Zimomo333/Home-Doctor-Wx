@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "发表文章",
+  "disableScroll": true,
+  "usingComponents": {
+    "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog"
+  }
+}

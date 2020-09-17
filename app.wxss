@@ -1,3 +1,5 @@
+@import '/miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
+
 /**app.wxss**/
 .container {
   height: 100%;

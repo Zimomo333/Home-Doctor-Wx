@@ -5,7 +5,8 @@
     "pages/department/department",
     "pages/my/my",
     "pages/doctorList/doctorList",
-    "pages/doctor/doctor"
+    "pages/doctor/doctor",
+    "pages/textConsult/textConsult"
   ],
   "window": {
     "backgroundTextStyle": "light",
