@@ -13,6 +13,16 @@
   <text> {{doctorInfo.rate}}</text>
   <text style="color:gray;margin-left:30px;">{{doctorInfo.total_consult}}</text> 总回答
 </view>
+<view class="comments">
+  <text style="font-weight:bold;font-size:20px;display:block;margin-bottom:10px;">患者评价</text>
+  <view class="comment" wx:key="index" wx:for="{{comments}}">
+    <text style="font-size:17px;">{{item.name}}　</text>
+    <van-icon name="star" color="orange" wx:key="index" wx:for="{{item.rate}}" />
+    <text style="font-size:15px;">\n{{item.content}}\n</text>
+    <text style="font-size:13px;">{{item.date}}</text>
+    <van-divider />
+  </view>
+</view>
 <van-goods-action>
   <van-goods-action-button text="图文咨询 ￥{{doctorInfo.text_consult_price}}" type="warning" bind:click="onClickText" />
   <van-goods-action-button text="电话咨询 ￥{{doctorInfo.phone_consult_price}}" bind:click="onClickPhone" />

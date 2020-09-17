@@ -34,6 +34,10 @@
   font-weight: bold;
 }
 
+.comments {
+  margin: 0px 15px 50px 15px;
+}
+
 van-goods-action-button {
   margin-bottom: 5px;
 }

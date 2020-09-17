@@ -15,9 +15,34 @@ Page({
       total_consult: 300,
       text_consult_price: 99,
       phone_consult_price: 119
-    }
+    },
+    comments: [
+      {
+        name: '小豪1',
+        rate: 5,
+        content: '谢谢医生的耐心回答',
+        date: '2020/9/17 17:15'
+      },
+      {
+        name: '小豪2',
+        rate: 4,
+        content: '谢谢医生的耐心回答',
+        date: '2020/9/17 17:15'
+      },
+      {
+        name: '小豪3',
+        rate: 3,
+        content: '谢谢医生的耐心回答',
+        date: '2020/9/17 17:15'
+      }
+    ]
   },
   onLoad(options) {
     this.setData({ doctor_id: options.doctor_id})
   },
+  onClickText() {
+    wx.navigateTo({
+      url: '/pages/textConsult/textConsult'
+    })
+  }
 })
