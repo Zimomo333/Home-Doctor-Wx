@@ -6,7 +6,9 @@
     "pages/my/my",
     "pages/doctorList/doctorList",
     "pages/doctor/doctor",
-    "pages/textConsult/textConsult"
+    "pages/textConsult/textConsult",
+    "pages/my/healthFile/healthFile",
+    "pages/my/myConsult/myConsult"
   ],
   "window": {
     "backgroundTextStyle": "light",

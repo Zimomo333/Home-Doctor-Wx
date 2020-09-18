@@ -1,1 +1,21 @@
-/* pages/my/my.wxss */
+.userinfo-avatar {
+  width: 70px;
+  height: 70px;
+  margin: 10px 0px;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.userinfo{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.userinfo button{
+  margin: 0px;
+}
