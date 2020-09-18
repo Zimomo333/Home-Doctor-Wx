@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "选择医生",
   "usingComponents": {
     "van-search": "@vant/weapp/search/index",
     "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",

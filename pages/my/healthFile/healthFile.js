@@ -1,66 +1,81 @@
 // pages/my/healthFile/healthFile.js
+let time = require('../../../utils/util');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo: {
+      userid: '',
+      username: '小豪',
+      sex: '1',
+      birthdate: '',
+      phone: '',
+      height: 178.0,
+      weight: 65.0,
+      issmoke: '0',
+      isdrink: '0',
+      liver_state: '0',
+      ismarry: '0',
+      chronic_disease: '',
+      allergy: '',
+      history_disease: '',
+      other: '',
+    },
+    showDatePicker: false,
+    currentDate: new Date().getTime(),
+    tempDate: '',
+    minDate: new Date(1900, 1, 1).getTime(),
+    formatter(type, value) {
+      if (type === 'year') {
+        return `${value}年`;
+      } else if (type === 'month') {
+        return `${value}月`;
+      } else if (type === 'day') {
+        return `${value}日`;
+      }
+      return value;
+    },
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  showDatePicker() {
+    this.setData({ showDatePicker: true });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onCloseDatePicker() {
+    this.setData({ showDatePicker: false });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  onConfirmDatePicker(event) {
+    this.setData({
+      'userInfo.birthdate': event.detail,
+      tempDate: time.formatTimeTwo(event.detail,'Y-M-D'),
+      showDatePicker: false
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  onChangeSex(event) {
+    // event.detail 为当前输入的值
+    this.setData({ 
+      'userInfo.sex': event.detail
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  onChangeSmoke(event) {
+    this.setData({ 
+      'userInfo.issmoke': event.detail
+    });
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  onChangeDrink(event) {
+    this.setData({ 
+      'userInfo.isdrink': event.detail
+    });
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  onChangeLiver(event) {
+    this.setData({ 
+      'userInfo.liver_state': event.detail
+    });
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onChangeMarriage(event) {
+    this.setData({ 
+      'userInfo.ismarry': event.detail
+    });
   }
 })

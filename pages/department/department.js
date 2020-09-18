@@ -6,7 +6,7 @@ Page({
     list: [
       {
         "url": "/pages/index/index",
-        "icon": "wap-home",
+        "icon": "wap-home-o",
         "text": "首页"
       },
       {

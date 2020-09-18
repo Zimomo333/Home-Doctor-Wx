@@ -1,1 +1,8 @@
-/* pages/my/healthFile/healthFile.wxss */
+van-radio-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+.firstRadio{
+  margin-right: 30px;
+}
