@@ -132,16 +132,23 @@ Page({
     wx.chooseImage({
       count: 1,
       success: function (res) {
-        that.editorCtx.insertImage({
-          src: res.tempFilePaths[0],
-          data: {
-            id: 'abcd',
-            role: 'god'
+        wx.uploadFile({
+          url: '自己的图片上传地址',
+          filePath: res.tempFilePaths[0],
+          name: 'file',
+          header: {
+            'Authorization': 'test123'
           },
-          width: '80%',
-          success: function () {
-            console.log('insert image success')
-            console.log(that.editorCtx)
+          success: function (res) {
+            console.log(res.data,'图片上传之后的数据')
+            var data = JSON.parse(res.data)
+            console.log(data.data.url)
+            that.editorCtx.insertImage({
+              src: data.data.url,
+              success: function () {
+                console.log('insert image success')
+              }
+            })
           }
         })
       }
