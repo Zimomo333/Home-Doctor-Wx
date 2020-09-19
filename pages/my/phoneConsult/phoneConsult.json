@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "电话问诊",
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
+  }
+}

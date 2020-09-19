@@ -5,10 +5,11 @@
   <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
 </view>
 
-<van-grid clickable column-num="1">
-  <van-grid-item icon="manager" link-type="navigateTo" url="/pages/my/healthFile/healthFile" text="健康档案" />
-  <van-grid-item icon="chat" link-type="navigateTo" url="/pages/my/myConsult/myConsult" text="我的问诊" />
-  <van-grid-item icon="clear" link-type="navigateTo" url="" text="退出登录" />
+<van-grid clickable column-num="2">
+  <van-grid-item custom-class="myGrid" icon="comment" link-type="navigateTo" url="/pages/my/textConsult/textConsult" text="图文问诊" />
+  <van-grid-item custom-class="myGrid" icon="chat" link-type="navigateTo" url="/pages/my/phoneConsult/phoneConsult" text="电话问诊" />
+  <van-grid-item custom-class="myGrid" icon="manager" link-type="navigateTo" url="/pages/my/healthFile/healthFile" text="健康档案" />
+  <van-grid-item custom-class="myGrid" icon="clear" link-type="navigateTo" url="" text="退出登录" />
 </van-grid>
 
 <van-tabbar active="{{ active }}" bind:change="onChange">

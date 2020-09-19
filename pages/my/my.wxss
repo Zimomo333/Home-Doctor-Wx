@@ -19,3 +19,7 @@
 .userinfo button{
   margin: 0px;
 }
+
+.myGrid {
+  height: 150px;
+}
