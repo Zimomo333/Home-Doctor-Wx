@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "电话问诊",
+  "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-button": "@vant/weapp/button/index"
+  }
+}

@@ -8,7 +8,8 @@
     "pages/doctor/doctor",
     "pages/textConsult/textConsult",
     "pages/my/healthFile/healthFile",
-    "pages/my/myConsult/myConsult"
+    "pages/my/myConsult/myConsult",
+    "pages/phoneConsult/phoneConsult"
   ],
   "window": {
     "backgroundTextStyle": "light",

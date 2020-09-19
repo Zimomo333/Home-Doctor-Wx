@@ -44,5 +44,10 @@ Page({
     wx.navigateTo({
       url: '/pages/textConsult/textConsult'
     })
+  },
+  onClickPhone() {
+    wx.navigateTo({
+      url: '/pages/phoneConsult/phoneConsult'
+    })
   }
 })
