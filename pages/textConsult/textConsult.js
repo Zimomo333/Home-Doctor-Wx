@@ -1,17 +1,11 @@
 Page({
   data: {
     formats: {},
-    readOnly: false,
-    placeholder: '开始输入...',
+    placeholder: '请详细描述你的病情...',
     editorHeight: 300,
     keyboardHeight: 0,
     isIOS: false,
     dialogShow: false
-  },
-  readOnlyChange() {
-    this.setData({
-      readOnly: !this.data.readOnly
-    })
   },
   onLoad() {
     const platform = wx.getSystemInfoSync().platform

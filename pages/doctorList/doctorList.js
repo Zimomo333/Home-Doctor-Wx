@@ -47,7 +47,6 @@ Page({
     this.selectComponent('#item').toggle();
   },
   jump(event){
-    console.log(event)
     wx.navigateTo({
       url: '/pages/doctor/doctor?doctor_id=' + event.currentTarget.id
     })

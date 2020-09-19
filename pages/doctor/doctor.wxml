@@ -24,6 +24,6 @@
   </view>
 </view>
 <van-goods-action>
-  <van-goods-action-button text="图文咨询 ￥{{doctorInfo.text_consult_price}}" type="warning" bind:click="onClickText" />
-  <van-goods-action-button text="电话咨询 ￥{{doctorInfo.phone_consult_price}}" bind:click="onClickPhone" />
+  <van-goods-action-button text="图文问诊 ￥{{doctorInfo.text_consult_price}}" type="warning" bind:click="onClickText" />
+  <van-goods-action-button text="电话问诊 ￥{{doctorInfo.phone_consult_price}}" bind:click="onClickPhone" />
 </van-goods-action>

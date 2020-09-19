@@ -1,4 +1,4 @@
-<view class="container" style="height:{{editorHeight}}px;">
+<view class="container_2" style="height:{{editorHeight}}px;">
   <editor
     id="editor"
     class="ql-container"
@@ -10,6 +10,7 @@
     show-img-resize="true"
   >
   </editor>
+  <van-button style="width:100%" type="primary" size="large" bind:click="clickLogText">提交</van-button>
 </view>
 
 <view class="toolbar" catchtouchend="format" hidden="{{keyboardHeight > 0 ? false : true}}" style="bottom: {{isIOS ? keyboardHeight : 0}}px">
@@ -28,5 +29,3 @@
 
 <mp-dialog title="确认清空所有内容？" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{ [{text: '取消'}, {text: '确定'}] }}">
 </mp-dialog>
-
-<button bindtap="clickLogText">提交</button>
