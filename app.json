@@ -10,7 +10,8 @@
     "pages/my/healthFile/healthFile",
     "pages/phoneConsult/phoneConsult",
     "pages/my/textConsult/textConsult",
-    "pages/my/phoneConsult/phoneConsult"
+    "pages/my/phoneConsult/phoneConsult",
+    "pages/my/textConsult/ing/ing"
   ],
   "window": {
     "backgroundTextStyle": "light",

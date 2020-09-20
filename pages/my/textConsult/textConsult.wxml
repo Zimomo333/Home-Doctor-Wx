@@ -1,7 +1,7 @@
 <van-tabs active="{{ active }}" animated swipeable>
   <van-tab title="进行中">
     <van-cell-group>
-      <van-cell wx:key="index" wx:for="{{ list }}" title="{{item.doctor_name}}" link-type="navigateTo" url="/pages/index/index" is-link center use-label-slot>
+      <van-cell wx:key="index" wx:for="{{ list }}" title="{{item.doctor_name}}" link-type="navigateTo" url="/pages/my/textConsult/ing/ing?id={{item.id}}" is-link center use-label-slot>
         <view slot="label">
           <text>下单日期：{{item.begin_date}}
           截止日期：{{item.end_date}}</text>

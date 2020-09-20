@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "图文问诊",
-  "disableScroll": true,
   "usingComponents": {
     "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog",
     "van-button": "@vant/weapp/button/index"

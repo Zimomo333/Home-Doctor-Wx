@@ -3,6 +3,7 @@ Page({
     active: 0,
     list: [
       {
+        id: '123',
         doctor_name: '钟南山',
         begin_date: '2020-09-09',
         end_date: '2020-09-30',
