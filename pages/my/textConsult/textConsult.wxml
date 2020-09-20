@@ -1,7 +1,7 @@
 <van-tabs active="{{ active }}" animated swipeable>
   <van-tab title="进行中">
     <van-cell-group>
-      <van-cell wx:key="index" wx:for="{{ list }}" title="{{item.doctor_name}}" link-type="navigateTo" url="/pages/my/textConsult/ing/ing?id={{item.id}}" is-link center use-label-slot>
+      <van-cell wx:key="index" wx:for="{{ ingList }}" title="{{item.doctor_name}}" link-type="navigateTo" url="/pages/my/textConsult/ing/ing?id={{item.id}}" is-link center use-label-slot>
         <view slot="label">
           <text>下单日期：{{item.begin_date}}
           截止日期：{{item.end_date}}</text>
@@ -15,9 +15,29 @@
     </van-cell-group>
   </van-tab>
   <van-tab title="待评价">
-  待评价
+    <van-cell-group>
+      <van-cell wx:key="index" wx:for="{{ ingList }}" title="{{item.doctor_name}}" link-type="navigateTo" url="/pages/my/textConsult/waitComment/waitComment?id={{item.id}}" is-link center use-label-slot>
+        <view slot="label">
+          <text>下单日期：{{item.begin_date}}
+          截止日期：{{item.end_date}}</text>
+        </view>
+        <view style="margin-right:20px;">
+          <text style="font-size:15px;">￥{{item.price}}</text>
+        </view>
+      </van-cell>
+    </van-cell-group>
   </van-tab>
   <van-tab title="已完成">
-  已完成
+    <van-cell-group>
+      <van-cell wx:key="index" wx:for="{{ ingList }}" title="{{item.doctor_name}}" link-type="navigateTo" url="/pages/my/textConsult/finish/finish?id={{item.id}}" is-link center use-label-slot>
+        <view slot="label">
+          <text>下单日期：{{item.begin_date}}
+          截止日期：{{item.end_date}}</text>
+        </view>
+        <view style="margin-right:20px;">
+          <text style="font-size:15px;">￥{{item.price}}</text>
+        </view>
+      </van-cell>
+    </van-cell-group>
   </van-tab>
 </van-tabs>

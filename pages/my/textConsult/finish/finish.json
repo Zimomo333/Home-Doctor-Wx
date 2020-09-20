@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "已完成",
+  "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
+    "van-rate": "@vant/weapp/rate/index"
+  }
+}

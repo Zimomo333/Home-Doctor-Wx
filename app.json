@@ -11,7 +11,9 @@
     "pages/phoneConsult/phoneConsult",
     "pages/my/textConsult/textConsult",
     "pages/my/phoneConsult/phoneConsult",
-    "pages/my/textConsult/ing/ing"
+    "pages/my/textConsult/ing/ing",
+    "pages/my/textConsult/waitComment/waitComment",
+    "pages/my/textConsult/finish/finish"
   ],
   "window": {
     "backgroundTextStyle": "light",
