@@ -24,5 +24,5 @@ Page({
     this.setData({
       rate: event.detail,
     });
-  },
+  }
 })

@@ -1,7 +1,9 @@
 {
-  "navigationBarTitleText": "电话问诊",
+  "navigationBarTitleText": "我的电话问诊",
   "usingComponents": {
     "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index"
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
   }
 }

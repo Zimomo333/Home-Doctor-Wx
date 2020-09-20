@@ -1,0 +1,17 @@
+<van-cell-group>
+  <van-field label="预约日期"  model:value="{{ date }}"  />
+  <van-field label="手机号码" type="number" model:value="{{ phone }}" />
+</van-cell-group>
+
+<van-rate
+  value="{{ rate }}"
+  size="{{ 25 }}"
+  color="#FFFF00"
+  void-color="#eee"
+  void-icon="star"
+  readonly
+/>
+
+<van-cell-group>
+  <van-field label="评价" type="textarea" autosize model:value="{{ comment }}" readonly />
+</van-cell-group>

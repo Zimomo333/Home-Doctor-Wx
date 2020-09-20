@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "待评价",
+  "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-rate": "@vant/weapp/rate/index"
+  }
+}
