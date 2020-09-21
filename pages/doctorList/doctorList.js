@@ -21,6 +21,11 @@ Page({
         id: '1',
         name: '钟南山',
         imageUrl: '/picture/doctor1.jpg',
+        hospital: '广州市中心医院',
+        location: '广州',
+        introduction: '呼吸内科学家，广州医科大学附属第一医院国家呼吸系统疾病临床医学研究中心主任',
+        total_consult: 300,
+        rate: 4.99,
         textPrice: 10.00,
         telPrice: 13.00
       },
@@ -28,6 +33,11 @@ Page({
         id: '2',
         name: '李文亮',
         imageUrl: '/picture/doctor2.jpg',
+        hospital: '北京市中心医院',
+        location: '北京',
+        introduction: '呼吸内科学家，广州医科大学附属第一医院国家呼吸系统疾病临床医学研究中心主任',
+        total_consult: 200,
+        rate: 4.97,
         textPrice: 10.00,
         telPrice: 13.00
       }

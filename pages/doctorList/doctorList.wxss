@@ -1,1 +1,9 @@
 /* pages/doctorList/doctorList.wxss */
+.introduction {
+  margin: 3px 0px;
+  overflow: hidden;           /* 超出一行文字自动隐藏 */
+  text-overflow: ellipsis;    /* 文字隐藏后添加省略号 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

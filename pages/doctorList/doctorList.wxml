@@ -15,15 +15,23 @@
 </van-dropdown-menu>
 <text>{{ department }}</text>
 <van-card
-  desc="描述信息"
+  desc="{{item.location}}　{{item.hospital}}"
   title="{{ item.name }}"
   thumb="{{ item.imageUrl }}"
   wx:key="index"
   wx:for="{{ doctors }}"
   id="{{ item.id }}"
   bindtap="jump"
+  centered="true"
 >
+  <view slot="price-top">
+    <text class="introduction">{{ item.introduction }}</text>
+  </view>
   <view slot="price">
-      图文:￥{{ item.textPrice }}　电话:￥{{ item.telPrice }}
+    评分:<text style="color:orange;"> {{item.rate}}</text>
+    <van-icon name="star" color="orange" size="12px" />　总回答:{{item.total_consult}}
+  </view>
+  <view slot="bottom">
+    图文:￥{{ item.textPrice }}　　电话:￥{{ item.telPrice }}
   </view>
 </van-card>
