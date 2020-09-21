@@ -2,7 +2,7 @@
   <van-field label="预约日期" bind:focus="showDatePicker" model:value="{{ tempDate }}" placeholder="请选择预约日期" />
   <van-field label="手机号码" type="number" model:value="{{ userInfo.phone }}" placeholder="请输入手机号码"/>
 </van-cell-group>
-<van-button type="primary" size="large">提交</van-button>
+<van-button style="width:100%;position:fixed;bottom:0;" type="primary" size="large" bind:click="">提交</van-button>
 
 <van-popup custom-style="width:100%;" show="{{ showDatePicker }}">
   <van-datetime-picker

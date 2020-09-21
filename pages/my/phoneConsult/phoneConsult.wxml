@@ -6,9 +6,7 @@
           <text>预约日期：{{item.date}}</text>
         </view>
         <view style="margin-right:20px;">
-          <text style="font-size:13px;">医生确认：{{ item.doctor_confirm ? '√' : '×'}}
-          用户确认：{{ item.user_confirm ? '√' : '×'}}
-          ￥15</text>
+          <text style="font-size:15px;">￥15</text>
         </view>
       </van-cell>
     </van-cell-group>
