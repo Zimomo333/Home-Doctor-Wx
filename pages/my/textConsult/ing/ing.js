@@ -2,6 +2,7 @@ Page({
   data: {
     formats: {},
     placeholder: '请详细描述你的病情...',
+    editorHeight: 150,
     keyboardHeight: 0,
     isIOS: false,
     dialogShow: false,

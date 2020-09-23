@@ -12,7 +12,7 @@
   </rich-text>
 </view>
 
-<view class="container_2">
+<view class="container_2" style="height:{{editorHeight}}px;">
   <editor
     id="editor"
     class="ql-container"
@@ -26,7 +26,7 @@
   </editor>
 </view>
 
-<view class="toolbar" catchtouchend="format" hidden="{{keyboardHeight > 0 ? false : true}}" style="bottom: {{isIOS ? keyboardHeight : 0}}px">
+<view class="toolbar" catchtouchend="format" hidden="{{keyboardHeight > 0 ? false : true}}" style="bottom: {{isIOS ? keyboardHeight : 50}}px;">
   <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
   <i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
   <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
