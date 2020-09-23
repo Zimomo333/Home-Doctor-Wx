@@ -41,7 +41,8 @@
   <van-field label="药物过敏" type="textarea" autosize model:value="{{ userInfo.allergy }}" placeholder="请输入药物过敏"/>
   <van-field label="其他补充" type="textarea" autosize model:value="{{ userInfo.other }}" placeholder="请输入其他补充"/>
 </van-cell-group>
-<van-button type="primary" size="large">保存档案</van-button>
+<view style="height:50px;"></view>
+<van-button style="width:100%;position:fixed;bottom:0;" type="primary" size="large" bind:click="">保存档案</van-button>
 
 <van-popup custom-style="width:100%;" show="{{ showDatePicker }}">
   <van-datetime-picker
