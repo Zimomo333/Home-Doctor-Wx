@@ -10,7 +10,7 @@
     show-img-resize="true"
   >
   </editor>
-  <van-button style="width:100%" type="primary" size="large" bind:click="clickLogText">提交</van-button>
+  <van-button style="width:100%" type="primary" size="large" bind:click="clickCommit">提交</van-button>
 </view>
 
 <view class="toolbar" catchtouchend="format" hidden="{{keyboardHeight > 0 ? false : true}}" style="bottom: {{isIOS ? keyboardHeight : 0}}px">

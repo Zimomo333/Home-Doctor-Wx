@@ -23,12 +23,12 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.2",
-	"appid": "wx9f72fd6c9a63d4fe",
+	"appid": "wx3e5955768b640056",
 	"projectname": "home-doctor",
 	"debugOptions": {
 		"hidedInDevtools": []

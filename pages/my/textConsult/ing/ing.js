@@ -88,11 +88,43 @@ Page({
     this.setData({ formats })
   },
   // 获取内容
-  clickLogText(e) {
+  clickCommit(e) {
     this.editorCtx.getContents({
       success: function(res) {
-        console.log(res.html)
-        wx.setStorageSync("content", res.html); // 缓存本地
+        var local_list = []   // 本地缓存图片路径
+        var remote_list = []  // 服务器图片路径
+        var promise_list = [] // Promise异步数组
+        var new_html = ''     // 替换后的富文本
+        // 获取原富文本中的本地缓存图片路径
+        res.html.replace(/<img src="(.+?)"/g,(a,v) => {
+          local_list.push(v);
+        })
+        // 有多少张图就构造多少个 上传图片的异步Promise
+        local_list.forEach((local_url) => {
+          promise_list.push(
+            new Promise((resolve,reject)=> {
+                wx.uploadFile({
+                  url: 'http://139.9.182.180:7300/mock/5f43486c2f2f585f01ffb7cf/example/upload',
+                  filePath: local_url,
+                  name: 'file',
+                  header: {
+                    'Authorization': 'test123'
+                  },
+                  success: function (res) {
+                    remote_list.push(JSON.parse(res.data).img)
+                    resolve()
+                  }
+                })
+            })
+          )
+        })
+        // 待图片全部上传成功，并返回服务器图片路径后，替换掉原文本中的路径
+        Promise.all(promise_list).then(()=>{
+          new_html = res.html.replace(/<img src="(.+?)"/g,() => {
+            return '<img src="'+remote_list.shift()+'"';
+          })
+          console.log(new_html)
+        })
       }
     })
   },
@@ -142,23 +174,11 @@ Page({
     wx.chooseImage({
       count: 1,
       success: function (res) {
-        wx.uploadFile({
-          url: '自己的图片上传地址',
-          filePath: res.tempFilePaths[0],
-          name: 'file',
-          header: {
-            'Authorization': 'test123'
-          },
-          success: function (res) {
-            console.log(res.data,'图片上传之后的数据')
-            var data = JSON.parse(res.data)
-            console.log(data.data.url)
-            that.editorCtx.insertImage({
-              src: data.data.url,
-              success: function () {
-                console.log('insert image success')
-              }
-            })
+        that.editorCtx.insertImage({
+          src: res.tempFilePaths[0],
+          width: '80%',
+          success: function () {
+            console.log('insert image success')
           }
         })
       }
