@@ -84,7 +84,7 @@ Page({
     this.editorCtx.getContents({
       success: function(res) {
         var local_list = []   // 本地缓存图片路径
-        var remote_list = []  // 服务器图片路径
+        // var remote_list = []  服务器图片路径
         var promise_list = [] // Promise异步数组
         var new_html = ''     // 替换后的富文本
         // 获取原富文本中的本地缓存图片路径
@@ -103,15 +103,15 @@ Page({
                     'Authorization': 'test123'
                   },
                   success: function (res) {
-                    remote_list.push(JSON.parse(res.data).img)
-                    resolve()
+                    // remote_list.push(JSON.parse(res.data).img)  Promise.all里的Promise是异步调用的，在此push无法保证图片顺序
+                    resolve(JSON.parse(res.data).img)
                   }
                 })
             })
           )
         })
         // 待图片全部上传成功，并返回服务器图片路径后，替换掉原文本中的路径
-        Promise.all(promise_list).then(()=>{
+        Promise.all(promise_list).then((remote_list)=>{             // Promise.all里的Promise是异步调用的，但是then中返回的结果有序
           new_html = res.html.replace(/<img src="(.+?)"/g,() => {
             return '<img src="'+remote_list.shift()+'"';
           })
