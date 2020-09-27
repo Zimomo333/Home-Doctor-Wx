@@ -1,48 +1,50 @@
 <!--pages/my/healthFile/healthFile.wxml-->
+<van-notify id="van-notify" />
+
 <van-cell-group>
-  <van-field label="姓名" model:value="{{ userInfo.name }}" placeholder="请输入姓名"/>
+  <van-field label="姓名" value="{{ userInfo.username }}" placeholder="请输入姓名" bind:input="onChangeUsername"/>
   <van-field label="性别" readonly> 
   <!-- 使用按钮插槽 slot="button" 插入单选框 -->
-    <van-radio-group slot="button" value="{{ userInfo.sex }}" bind:change="onChangeSex">
-      <van-radio name="1" class="firstRadio" checked-color="#07c160">男</van-radio>
-      <van-radio name="0" class="firstRadio" checked-color="#07c160">女</van-radio>
+    <van-radio-group slot="button" value="{{ userInfo.sex }}" bind:input="onChangeSex">
+      <van-radio name="{{1}}" class="firstRadio" checked-color="#07c160">男</van-radio>
+      <van-radio name="{{0}}" class="firstRadio" checked-color="#07c160">女</van-radio>
     </van-radio-group>
   </van-field>
-  <van-field label="出生日期" bind:focus="showDatePicker" model:value="{{ tempDate }}" placeholder="请选择出生日期" />
-  <van-field label="手机号码" type="number" model:value="{{ userInfo.phone }}" placeholder="请输入手机号码"/>
-  <van-field label="身高" type="digit" model:value="{{ userInfo.height }}" placeholder="请输入身高"/>
-  <van-field label="体重" type="digit" model:value="{{ userInfo.weight }}" placeholder="请输入体重"/>
+  <van-field label="出生日期" value="{{ tempDate }}" placeholder="请选择出生日期" use-button-slot readonly>
+    <van-button slot="button" size="small" type="primary" bind:click="showDatePicker">选择日期</van-button>
+  </van-field>
+  <van-field label="身高" type="digit" value="{{ userInfo.height }}" placeholder="请输入身高" bind:input="onChangeHeight"/>
+  <van-field label="体重" type="digit" value="{{ userInfo.weight }}" placeholder="请输入体重" bind:input="onChangeWeight"/>
   <van-field label="吸烟史" readonly> 
     <van-radio-group slot="button" value="{{ userInfo.issmoke }}" bind:change="onChangeSmoke">
-      <van-radio name="1" class="firstRadio" checked-color="#07c160">吸烟</van-radio>
-      <van-radio name="0" checked-color="#07c160">不吸烟</van-radio>
+      <van-radio name="{{1}}" class="firstRadio" checked-color="#07c160">吸烟</van-radio>
+      <van-radio name="{{0}}" checked-color="#07c160">不吸烟</van-radio>
     </van-radio-group>
   </van-field>
   <van-field label="饮酒史" readonly> 
     <van-radio-group slot="button" value="{{ userInfo.isdrink }}" bind:change="onChangeDrink">
-      <van-radio name="1" class="firstRadio" checked-color="#07c160">饮酒</van-radio>
-      <van-radio name="0" checked-color="#07c160">不饮酒</van-radio>
+      <van-radio name="{{1}}" class="firstRadio" checked-color="#07c160">饮酒</van-radio>
+      <van-radio name="{{0}}" checked-color="#07c160">不饮酒</van-radio>
     </van-radio-group>
   </van-field>
   <van-field label="肝功能" readonly> 
-    <van-radio-group slot="button" value="{{ userInfo.liver_state }}" bind:change="onChangeLiver">
-      <van-radio name="1" style="margin-right:15px;" checked-color="#07c160">不正常</van-radio>
-      <van-radio name="0" style="margin-right:15px;" checked-color="#07c160">正常</van-radio>
+    <van-radio-group slot="button" value="{{ userInfo.liverState }}" bind:change="onChangeLiver">
+      <van-radio name="{{1}}" style="margin-right:15px;" checked-color="#07c160">不正常</van-radio>
+      <van-radio name="{{0}}" style="margin-right:15px;" checked-color="#07c160">正常</van-radio>
     </van-radio-group>
   </van-field>
   <van-field label="婚姻状态" readonly> 
     <van-radio-group slot="button" value="{{ userInfo.ismarry }}" bind:change="onChangeMarriage">
-      <van-radio name="1" class="firstRadio" checked-color="#07c160">已婚</van-radio>
-      <van-radio name="0" style="margin-right:15px;" checked-color="#07c160">未婚</van-radio>
+      <van-radio name="{{1}}" class="firstRadio" checked-color="#07c160">已婚</van-radio>
+      <van-radio name="{{0}}" style="margin-right:15px;" checked-color="#07c160">未婚</van-radio>
     </van-radio-group>
   </van-field>
-  <van-field label="慢性病" type="textarea" autosize model:value="{{ userInfo.chronic_disease }}" placeholder="请输入慢性病"/>
-  <van-field label="家族病史" type="textarea" autosize model:value="{{ userInfo.history_disease }}" placeholder="请输入家族病史"/>
-  <van-field label="药物过敏" type="textarea" autosize model:value="{{ userInfo.allergy }}" placeholder="请输入药物过敏"/>
-  <van-field label="其他补充" type="textarea" autosize model:value="{{ userInfo.other }}" placeholder="请输入其他补充"/>
+  <van-field label="慢性病" type="textarea" autosize value="{{ userInfo.chronicDisease === 'null' ? '' : userInfo.chronicDisease }}" placeholder="请输入慢性病" bind:input="onChangeChronicDisease"/>
+  <van-field label="家族病史" type="textarea" autosize value="{{ userInfo.historyDisease === 'null' ? '' : userInfo.historyDisease }}" placeholder="请输入家族病史" bind:input="onChangeHistoryDisease"/>
+  <van-field label="药物过敏" type="textarea" autosize value="{{ userInfo.allergy === 'null' ? '' : userInfo.allergy }}" placeholder="请输入药物过敏" bind:input="onChangeAllergy"/>
+  <van-field label="其他补充" type="textarea" autosize value="{{ userInfo.other === 'null' ? '' : userInfo.other }}" placeholder="请输入其他补充" bind:input="onChangeOther"/>
 </van-cell-group>
-<view style="height:50px;"></view>
-<van-button style="width:100%;position:fixed;bottom:0;" type="primary" size="large" bind:click="">保存档案</van-button>
+<van-button style="width:100%;" type="primary" size="large" bind:click="onClickCommit">保存档案</van-button>
 
 <van-popup custom-style="width:100%;" show="{{ showDatePicker }}">
   <van-datetime-picker

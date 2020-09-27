@@ -1,5 +1,7 @@
 // pages/my/healthFile/healthFile.js
 let time = require('../../../utils/util');
+import myRequest from '../../../utils/request'
+import Notify from '../../../miniprogram_npm/@vant/weapp/notify/notify';
 
 Page({
 
@@ -7,23 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {
-      userid: '',
-      username: '小豪',
-      sex: '1',
-      birthdate: '',
-      phone: '',
-      height: 178.0,
-      weight: 65.0,
-      issmoke: '0',
-      isdrink: '0',
-      liver_state: '0',
-      ismarry: '0',
-      chronic_disease: '',
-      allergy: '',
-      history_disease: '',
-      other: '',
-    },
+    userInfo: {},
     showDatePicker: false,
     currentDate: new Date().getTime(),
     tempDate: '',
@@ -39,6 +25,32 @@ Page({
       return value;
     },
   },
+  onLoad(){
+    myRequest('/wx_user/get_health_record',null,'GET').then((data)=>{
+      if(data === null){
+        myRequest('/wx_user/init_health_record',null,'GET').then(()=>{
+          myRequest('/wx_user/get_health_record',null,'GET').then((data)=>{
+            console.log('healthFile init success!');
+            this.setData({ userInfo: data });
+          })
+        })
+      } else {
+        this.setData({ userInfo: data });
+        if(data.birthdate!==null){  //当birthdate空时不转换
+          this.setData({
+            tempDate: time.formatTimeTwo(Number(this.data.userInfo.birthdate),'Y-M-D')
+          })
+        }
+      }
+    })
+  },
+  onClickCommit() {
+    myRequest('/wx_user/update_health_record',this.data.userInfo,'POST').then(()=>{
+      Notify({ type: 'success', message: '保存成功！' });
+    }).catch(()=>{
+      Notify({ type: 'danger', message: '保存失败！' });
+    })
+  },
   showDatePicker() {
     this.setData({ showDatePicker: true });
   },
@@ -50,6 +62,21 @@ Page({
       'userInfo.birthdate': event.detail,
       tempDate: time.formatTimeTwo(event.detail,'Y-M-D'),
       showDatePicker: false
+    });
+  },
+  onChangeUsername(event){
+    this.setData({
+      'userInfo.username': event.detail
+    });
+  },
+  onChangeHeight(event){
+    this.setData({
+      'userInfo.height': event.detail
+    });
+  },
+  onChangeWeight(event){
+    this.setData({
+      'userInfo.weight': event.detail
     });
   },
   onChangeSex(event) {
@@ -70,12 +97,32 @@ Page({
   },
   onChangeLiver(event) {
     this.setData({ 
-      'userInfo.liver_state': event.detail
+      'userInfo.liverState': event.detail
     });
   },
   onChangeMarriage(event) {
     this.setData({ 
       'userInfo.ismarry': event.detail
     });
-  }
+  },
+  onChangeChronicDisease(event){
+    this.setData({
+      'userInfo.chronicDisease': event.detail
+    });
+  },
+  onChangeHistoryDisease(event){
+    this.setData({
+      'userInfo.historyDisease': event.detail
+    });
+  },
+  onChangeAllergy(event){
+    this.setData({
+      'userInfo.allergy': event.detail
+    });
+  },
+  onChangeOther(event){
+    this.setData({
+      'userInfo.other': event.detail
+    });
+  },
 })

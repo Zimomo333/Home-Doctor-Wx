@@ -2,7 +2,7 @@
 <view class="userinfo">
   <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信登录</button>
   <text wx:else class="userinfo-nickname">{{userInfo.nickName}}</text>
-  <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+  <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
 </view>
 
 <van-grid clickable column-num="2">

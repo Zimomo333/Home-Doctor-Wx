@@ -1,3 +1,4 @@
+import myRequest from './utils/request'
 //app.js
 App({
   onLaunch: function () {
@@ -8,16 +9,17 @@ App({
 
     // 登录
     wx.login({
-      url: this.globalData.ip+'/wx/user/getOpenid',
-      data: {
-        code: res.code
-      },
       success: res => {
-        this.globalData.openid = res.data.openid
-        // 由于 getOpenid 是网络请求，可能会在 Page.onLoad 之后才返回
-        // 所以此处加入 callback 以防止这种情况
-        if (this.openidReadyCallback) {
-          this.openidReadyCallback(res)
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (res.code) {
+          //发起网络请求
+          myRequest('/wx_user/login',{ code:res.code },'POST').then((token)=>{
+            wx.setStorageSync('token', token)
+          }).catch((error)=>{
+            console.log(error)
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
         }
       }
     })
@@ -43,8 +45,5 @@ App({
     })
   },
   globalData: {
-    ip: 'http://127.0.0.1:8080',
-    openid: null,
-    id: null
   }
 })
