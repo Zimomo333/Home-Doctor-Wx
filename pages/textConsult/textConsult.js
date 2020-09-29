@@ -113,7 +113,7 @@ Page({
                   },
                   success: function (res) {
                     // remote_list.push(JSON.parse(res.data).img)  Promise.all里的Promise是异步调用的，在此push无法保证图片顺序
-                    resolve(res.data.data)
+                    resolve(JSON.parse(res.data).data)
                   }
                 })
             })
