@@ -1,29 +1,28 @@
 <!--pages/doctor/doctor.wxml-->
-<van-image width="100" height="100" radius="10" src="{{ doctorInfo.imageUrl }}" />
+<van-image width="100" height="100" radius="10" src="{{ doctorInfo.head }}" />
 <view class="info">
-  <text id="name">{{ doctorInfo.name }}</text>
+  <text id="name">{{ doctorInfo.realName }}</text>
   <text id="department">
-    {{ doctorInfo.department }}　{{ doctorInfo.position }}
+    {{ doctorInfo.department }}　{{ doctorInfo.professor }}
     {{ doctorInfo.hospital }}
   </text>
-  <text id="introduction">{{ doctorInfo.introduction }}</text>
+  <text id="introduction">{{ doctorInfo.message }}</text>
 </view>
 <view class="count">
   <van-icon name="star" color="orange" size="20px" />
-  <text> {{doctorInfo.rate}}</text>
-  <text style="color:gray;margin-left:30px;">{{doctorInfo.total_consult}}</text> 总回答
+  <text> {{doctorInfo.goodcommonts}}</text>
+  <text style="color:gray;margin-left:30px;">{{doctorInfo.services}}</text> 总回答
 </view>
 <view class="comments">
   <text style="font-weight:bold;font-size:20px;display:block;margin-bottom:10px;">患者评价</text>
   <view class="comment" wx:key="index" wx:for="{{comments}}">
-    <text style="font-size:17px;">{{item.name}}　</text>
-    <van-icon name="star" color="orange" wx:key="index" wx:for="{{item.rate}}" />
+    <text style="font-size:17px;">用户{{item.id}}　</text>
+    <van-icon name="star" color="orange" wx:key="index" wx:for="{{item.star}}" />
     <text style="font-size:15px;">\n{{item.content}}\n</text>
-    <text style="font-size:13px;">{{item.date}}</text>
     <van-divider />
   </view>
 </view>
 <van-goods-action>
-  <van-goods-action-button text="图文问诊 ￥{{doctorInfo.text_consult_price}}" type="warning" bind:click="onClickText" />
-  <van-goods-action-button text="电话问诊 ￥{{doctorInfo.phone_consult_price}}" bind:click="onClickPhone" />
+  <van-goods-action-button text="图文问诊 ￥{{doctorInfo.morderPrice}}" type="warning" bind:click="onClickText" />
+  <van-goods-action-button text="电话问诊 ￥{{doctorInfo.porderPrice}}" bind:click="onClickPhone" />
 </van-goods-action>
