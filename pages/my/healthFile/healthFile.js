@@ -45,6 +45,21 @@ Page({
     })
   },
   onClickCommit() {
+    this.setData({
+      'userInfo.username': this.data.userInfo.username === null ? '' : this.data.userInfo.username,
+      'userInfo.sex': this.data.userInfo.sex === null ? '' : this.data.userInfo.sex,
+      'userInfo.birthdate': this.data.userInfo.birthdate === null ? '' : this.data.userInfo.birthdate,
+      'userInfo.height': this.data.userInfo.height === null ? '' : this.data.userInfo.height,
+      'userInfo.weight': this.data.userInfo.weight === null ? '' : this.data.userInfo.weight,
+      'userInfo.issmoke': this.data.userInfo.issmoke === null ? '' : this.data.userInfo.issmoke,
+      'userInfo.isdrink': this.data.userInfo.isdrink === null ? '' : this.data.userInfo.isdrink,
+      'userInfo.liverState': this.data.userInfo.liverState === null ? '' : this.data.userInfo.liverState,
+      'userInfo.ismarry': this.data.userInfo.ismarry === null ? '' : this.data.userInfo.ismarry,
+      'userInfo.chronicDisease': this.data.userInfo.chronicDisease === null ? '' : this.data.userInfo.chronicDisease,
+      'userInfo.other': this.data.userInfo.other === null ? '' : this.data.userInfo.other,
+      'userInfo.allergy': this.data.userInfo.allergy === null ? '' : this.data.userInfo.allergy,
+      'userInfo.historyDisease': this.data.userInfo.historyDisease === null ? '' : this.data.userInfo.historyDisease,
+    })
     myRequest('/wx_user/update_health_record',this.data.userInfo,'POST').then(()=>{
       Notify({ type: 'success', message: '保存成功！' });
     }).catch(()=>{

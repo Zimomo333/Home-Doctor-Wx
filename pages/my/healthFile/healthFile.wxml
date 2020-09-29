@@ -13,8 +13,8 @@
   <van-field label="出生日期" value="{{ tempDate }}" placeholder="请选择出生日期" use-button-slot readonly>
     <van-button slot="button" size="small" type="primary" bind:click="showDatePicker">选择日期</van-button>
   </van-field>
-  <van-field label="身高" type="digit" value="{{ userInfo.height }}" placeholder="请输入身高" bind:input="onChangeHeight"/>
-  <van-field label="体重" type="digit" value="{{ userInfo.weight }}" placeholder="请输入体重" bind:input="onChangeWeight"/>
+  <van-field label="身高" type="number" value="{{ userInfo.height }}" placeholder="请输入身高" bind:input="onChangeHeight"/>
+  <van-field label="体重" type="number" value="{{ userInfo.weight }}" placeholder="请输入体重" bind:input="onChangeWeight"/>
   <van-field label="吸烟史" readonly> 
     <van-radio-group slot="button" value="{{ userInfo.issmoke }}" bind:change="onChangeSmoke">
       <van-radio name="{{1}}" class="firstRadio" checked-color="#07c160">吸烟</van-radio>
@@ -39,10 +39,10 @@
       <van-radio name="{{0}}" style="margin-right:15px;" checked-color="#07c160">未婚</van-radio>
     </van-radio-group>
   </van-field>
-  <van-field label="慢性病" type="textarea" autosize value="{{ userInfo.chronicDisease === 'null' ? '' : userInfo.chronicDisease }}" placeholder="请输入慢性病" bind:input="onChangeChronicDisease"/>
-  <van-field label="家族病史" type="textarea" autosize value="{{ userInfo.historyDisease === 'null' ? '' : userInfo.historyDisease }}" placeholder="请输入家族病史" bind:input="onChangeHistoryDisease"/>
-  <van-field label="药物过敏" type="textarea" autosize value="{{ userInfo.allergy === 'null' ? '' : userInfo.allergy }}" placeholder="请输入药物过敏" bind:input="onChangeAllergy"/>
-  <van-field label="其他补充" type="textarea" autosize value="{{ userInfo.other === 'null' ? '' : userInfo.other }}" placeholder="请输入其他补充" bind:input="onChangeOther"/>
+  <van-field label="慢性病" type="textarea" autosize value="{{ userInfo.chronicDisease }}" placeholder="请输入慢性病" bind:input="onChangeChronicDisease"/>
+  <van-field label="家族病史" type="textarea" autosize value="{{ userInfo.historyDisease }}" placeholder="请输入家族病史" bind:input="onChangeHistoryDisease"/>
+  <van-field label="药物过敏" type="textarea" autosize value="{{ userInfo.allergy }}" placeholder="请输入药物过敏" bind:input="onChangeAllergy"/>
+  <van-field label="其他补充" type="textarea" autosize value="{{ userInfo.other }}" placeholder="请输入其他补充" bind:input="onChangeOther"/>
 </van-cell-group>
 <van-button style="width:100%;" type="primary" size="large" bind:click="onClickCommit">保存档案</van-button>
 
