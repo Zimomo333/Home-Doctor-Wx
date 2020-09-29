@@ -17,12 +17,12 @@ Page({
   },
   onClickText() {
     wx.navigateTo({
-      url: '/pages/textConsult/textConsult'
+      url: '/pages/textConsult/textConsult?doctor_id=' + this.data.doctor_id + '&price=' + this.data.doctorInfo.morderPrice
     })
   },
   onClickPhone() {
     wx.navigateTo({
-      url: '/pages/phoneConsult/phoneConsult'
+      url: '/pages/phoneConsult/phoneConsult?doctor_id=' + this.data.doctor_id + '&price=' + this.data.doctorInfo.porderPrice
     })
   }
 })

@@ -1,5 +1,9 @@
+import myRequest from '../../utils/request'
+
 Page({
   data: {
+    price: '',
+    doctor_id: '',
     formats: {},
     placeholder: '请详细描述你的病情...',
     editorHeight: 300,
@@ -7,7 +11,11 @@ Page({
     isIOS: false,
     dialogShow: false
   },
-  onLoad() {
+  onLoad(options) {
+    this.setData({ 
+      doctor_id: options.doctor_id,
+      price: options.price
+    })
     const platform = wx.getSystemInfoSync().platform
     const isIOS = platform === 'ios'
     this.setData({ isIOS})
@@ -81,6 +89,7 @@ Page({
   //   })
   // },
   clickCommit(e) {
+    var that = this
     this.editorCtx.getContents({
       success: function(res) {
         var local_list = []   // 本地缓存图片路径
@@ -96,15 +105,15 @@ Page({
           promise_list.push(
             new Promise((resolve,reject)=> {
                 wx.uploadFile({
-                  url: 'http://139.9.182.180:7300/mock/5f43486c2f2f585f01ffb7cf/example/upload',
+                  url: 'https://www.qnm.green:8080/wx_user/upload_image',
                   filePath: local_url,
                   name: 'file',
                   header: {
-                    'Authorization': 'test123'
+                    'token': wx.getStorageSync("token")
                   },
                   success: function (res) {
                     // remote_list.push(JSON.parse(res.data).img)  Promise.all里的Promise是异步调用的，在此push无法保证图片顺序
-                    resolve(JSON.parse(res.data).img)
+                    resolve(res.data.data)
                   }
                 })
             })
@@ -115,7 +124,11 @@ Page({
           new_html = res.html.replace(/<img src="(.+?)"/g,() => {
             return '<img src="'+remote_list.shift()+'"';
           })
-          console.log(new_html)
+          myRequest('/wx_user/publish_morder',{id:that.data.doctor_id,price:that.data.price,content:new_html},'POST').then(()=>{
+            wx.navigateTo({
+              url: '/pages/my/textConsult/textConsult'
+            })
+          })
         })
       }
     })

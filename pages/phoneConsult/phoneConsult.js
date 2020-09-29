@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    price: '',
+    doctor_id: '',
     date: '',
     phone: '',
     showDatePicker: false,
@@ -27,6 +29,12 @@ Page({
       return value;
     },
   },
+  onLoad(options) {
+    this.setData({
+      doctor_id: options.doctor_id,
+      price: options.price
+    })
+  },
   showDatePicker() {
     this.setData({ showDatePicker: true });
   },
@@ -40,5 +48,8 @@ Page({
       tempDate: time.formatTimeTwo(event.detail,'Y-M-D h:m'),
       showDatePicker: false
     });
+  },
+  onClickCommit(){
+    
   }
 })
