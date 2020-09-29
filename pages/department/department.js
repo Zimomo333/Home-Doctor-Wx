@@ -28,7 +28,7 @@ Page({
       },
       {
         "icon": "/icon/brain.svg",
-        "text": "精神心理科",
+        "text": "心理科",
         "name": "brain"
       },{
         "icon": "/icon/ear.svg",

@@ -1,9 +1,10 @@
 // pages/doctorList/doctorList.js
 import area from "./area"
+import myRequest from '../../utils/request'
 
 Page({
   data: {
-    page:0,
+    page:1,
     department: '',
     search: '',
     sortOption: [
@@ -17,95 +18,18 @@ Page({
     areaList: area,
     areaName: '全国',
     areaCode: '100100',
-    doctors: [
-      { 
-        id: '1',
-        name: '钟南山',
-        imageUrl: '/picture/doctor1.jpg',
-        hospital: '广州市中心医院',
-        location: '广州',
-        introduction: '呼吸内科学家，广州医科大学附属第一医院国家呼吸系统疾病临床医学研究中心主任',
-        total_consult: 300,
-        rate: 4.99,
-        textPrice: 10.00,
-        telPrice: 13.00
-      },
-      { 
-        id: '2',
-        name: '李文亮',
-        imageUrl: '/picture/doctor2.jpg',
-        hospital: '北京市中心医院',
-        location: '北京',
-        introduction: '呼吸内科学家，广州医科大学附属第一医院国家呼吸系统疾病临床医学研究中心主任',
-        total_consult: 200,
-        rate: 4.97,
-        textPrice: 10.00,
-        telPrice: 13.00
-      },
-      { 
-        id: '2',
-        name: '李文亮',
-        imageUrl: '/picture/doctor2.jpg',
-        hospital: '北京市中心医院',
-        location: '北京',
-        introduction: '呼吸内科学家，广州医科大学附属第一医院国家呼吸系统疾病临床医学研究中心主任',
-        total_consult: 200,
-        rate: 4.97,
-        textPrice: 10.00,
-        telPrice: 13.00
-      },
-      { 
-        id: '2',
-        name: '李文亮',
-        imageUrl: '/picture/doctor2.jpg',
-        hospital: '北京市中心医院',
-        location: '北京',
-        introduction: '呼吸内科学家，广州医科大学附属第一医院国家呼吸系统疾病临床医学研究中心主任',
-        total_consult: 200,
-        rate: 4.97,
-        textPrice: 10.00,
-        telPrice: 13.00
-      },
-      { 
-        id: '2',
-        name: '李文亮',
-        imageUrl: '/picture/doctor2.jpg',
-        hospital: '北京市中心医院',
-        location: '北京',
-        introduction: '呼吸内科学家，广州医科大学附属第一医院国家呼吸系统疾病临床医学研究中心主任',
-        total_consult: 200,
-        rate: 4.97,
-        textPrice: 10.00,
-        telPrice: 13.00
-      },
-      { 
-        id: '2',
-        name: '李文亮',
-        imageUrl: '/picture/doctor2.jpg',
-        hospital: '北京市中心医院',
-        location: '北京',
-        introduction: '呼吸内科学家，广州医科大学附属第一医院国家呼吸系统疾病临床医学研究中心主任',
-        total_consult: 200,
-        rate: 4.97,
-        textPrice: 10.00,
-        telPrice: 13.00
-      },
-      { 
-        id: '2',
-        name: '李文亮',
-        imageUrl: '/picture/doctor2.jpg',
-        hospital: '北京市中心医院',
-        location: '北京',
-        introduction: '呼吸内科学家，广州医科大学附属第一医院国家呼吸系统疾病临床医学研究中心主任',
-        total_consult: 200,
-        rate: 4.97,
-        textPrice: 10.00,
-        telPrice: 13.00
-      },
-    ]
+    doctors: []
   },
   onLoad(options) {
     this.setData({ department: options.department})
+    myRequest('/wx_user/find_doctor_by_department',{department:options.department,page:this.data.page},'GET').then((data)=>{
+      data.forEach((doctor)=>{
+        doctor.goodcommonts=(doctor.goodcommonts/doctor.allcommonts*5).toFixed(2)
+      })
+      this.setData({
+        doctors: data
+      })
+    })
   },
   areaConfirm( {detail: { values }} ) {   //对象解构
     this.selectComponent('#item').toggle();
@@ -123,26 +47,16 @@ Page({
     })
   },
   onReachBottom(){    //上拉懒加载
-    var doctor = { 
-      id: '2',
-      name: '李文亮',
-      imageUrl: '/picture/doctor2.jpg',
-      hospital: '北京市中心医院',
-      location: '北京',
-      introduction: '呼吸内科学家，广州医科大学附属第一医院国家呼吸系统疾病临床医学研究中心主任',
-      total_consult: 200,
-      rate: 4.97,
-      textPrice: 10.00,
-      telPrice: 13.00
-    };
-    var arr= [];
-    for(var i=0;i<10;i++){
-      arr.push(doctor);
-    }
-    console.log(this.data.limit);
-    this.setData({
-      page: this.page.limit+1,
-      doctors: this.data.doctors.concat(arr)
+    myRequest('/wx_user/find_doctor_by_department',{department:this.data.department,page:this.data.page+1},'GET').then((data)=>{
+      if(data.length != 0){   // 判断是否已经没数据了
+        data.forEach((doctor)=>{
+          doctor.goodcommonts=(doctor.goodcommonts/doctor.allcommonts*5).toFixed(2)
+        })
+        this.setData({
+          page:this.data.page+1,
+          doctors: this.data.doctors.concat(data)
+        })
+      }
     })
   }
 })

@@ -15,9 +15,9 @@
 </van-dropdown-menu>
 <text>{{ department }}</text>
 <van-card
-  desc="{{item.location}}　{{item.hospital}}"
-  title="{{ item.name }}"
-  thumb="{{ item.imageUrl }}"
+  desc="{{item.province}}　{{item.hospital}}"
+  title="{{ item.realName }}"
+  thumb="{{ item.head }}"
   wx:key="index"
   wx:for="{{ doctors }}"
   id="{{ item.id }}"
@@ -25,13 +25,13 @@
   centered="true"
 >
   <view slot="price-top">
-    <text class="introduction">{{ item.introduction }}</text>
+    <text class="introduction">{{ item.message }}</text>
   </view>
   <view slot="price">
-    评分:<text style="color:orange;"> {{item.rate}}</text>
-    <van-icon name="star" color="orange" size="12px" />　总回答:{{item.total_consult}}
+    评分:<text style="color:orange;"> {{item.goodcommonts}}</text>
+    <van-icon name="star" color="orange" size="12px" />　总回答: {{item.services}}
   </view>
   <view slot="bottom">
-    图文:￥{{ item.textPrice }}　　电话:￥{{ item.telPrice }}
+    图文:￥{{ item.morderPrice }}　　电话:￥{{ item.porderPrice }}
   </view>
 </van-card>

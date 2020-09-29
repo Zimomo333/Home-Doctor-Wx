@@ -11,7 +11,7 @@
     wx:key="index"
     wx:for="{{ department }}"
     link-type="navigateTo"
-    url="/pages/doctorList/doctorList?department={{ item.name }}"
+    url="/pages/doctorList/doctorList?department={{ item.text }}"
   />
 </van-grid>
 <van-tabbar active="{{ active }}" bind:change="onChange">
