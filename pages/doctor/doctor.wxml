@@ -19,7 +19,7 @@
     <text style="font-size:17px;">用户{{item.id}}　</text>
     <van-icon name="star" color="orange" wx:key="index" wx:for="{{item.star}}" />
     <text style="font-size:15px;">\n{{item.content}}\n</text>
-    <text style="font-size:13px;">{{item.date}}</text> 
+    <text style="font-size:13px;">{{item.time}}</text> 
     <van-divider />
   </view>
 </view>
