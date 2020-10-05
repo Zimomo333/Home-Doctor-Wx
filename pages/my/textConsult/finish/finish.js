@@ -26,5 +26,11 @@ Page({
         consults: this.data.consults.concat(data)
       })
     })
+    myRequest('/wx_user/getCommonts',{id:options.id},'GET').then((data)=>{
+      this.setData({
+        comment: data.content,
+        rate: data.star
+      })
+    })
   }
 })
