@@ -1,6 +1,6 @@
 <view>{{consult_id}}</view>
-<view wx:key="index" wx:for="{{ consults }}" style="margin:0 10px 10px 5px;background-color:{{ item.type == 1 ? '#CCFFFF' : '#CCFF99' }}">
-  <view wx:if="{{ item.type == 1 }}">
+<view wx:key="index" wx:for="{{ consults }}" style="margin:0 10px 10px 5px;background-color:{{ item.type == 0 ? '#CCFFFF' : '#CCFF99' }}">
+  <view wx:if="{{ item.type == 0 }}">
     <text>{{doctor_name}}：</text>
     <text style="float:right;">{{ item.time }}</text>
   </view>

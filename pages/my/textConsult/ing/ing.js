@@ -1,3 +1,5 @@
+import myRequest from '../../../../utils/request'
+
 Page({
   data: {
     formats: {},
@@ -7,23 +9,28 @@ Page({
     isIOS: false,
     dialogShow: false,
     consult_id: '',
-    doctor_name: '钟南山',
-    consults: [
-      {
-        type: 1,
-        time: '2020-09-20 20:27',
-        content: '<h3>I am doctor</h3>'
-      },
-      {
-        type: 0,
-        time: '2020-09-20 20:27',
-        content: '<h3>I am patient</h3>'
-      },
-    ]
+    doctor_name: '',
+    consults: []
   },
   onLoad(options) {
     this.setData({ consult_id: options.id})
-    
+    myRequest('/wx_user/show_morder',{id:options.id},'GET').then((data)=>{
+      var first = {
+        type: 1,
+        time: data.beginTime,
+        content: data.content
+      };
+      this.setData({
+        consults: this.data.consults.concat(first),
+        doctor_name: data.realName
+      })
+      return myRequest('/wx_user/get_morder_message',{id:options.id},'GET')
+    }).then((data)=>{
+      this.setData({
+        consults: this.data.consults.concat(data)
+      })
+    })
+
     const platform = wx.getSystemInfoSync().platform
     const isIOS = platform === 'ios'
     this.setData({ isIOS})

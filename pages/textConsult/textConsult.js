@@ -124,10 +124,10 @@ Page({
           new_html = res.html.replace(/<img src="(.+?)"/g,() => {
             return '<img src="'+remote_list.shift()+'"';
           })
-          myRequest('/wx_user/publish_morder',{id:that.data.doctor_id,price:that.data.price,content:new_html},'POST').then(()=>{
-            wx.navigateTo({
-              url: '/pages/my/textConsult/textConsult'
-            })
+          return myRequest('/wx_user/publish_morder',{id:that.data.doctor_id,price:that.data.price,content:new_html},'POST')
+        }).then(()=>{
+          wx.navigateTo({
+            url: '/pages/my/textConsult/textConsult'
           })
         })
       }
