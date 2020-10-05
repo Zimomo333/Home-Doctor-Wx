@@ -7,7 +7,12 @@ Page({
     waitCommentList: [],
     finishList: []
   },
-  onLoad(){
+  onLoad(option){
+    if(option.active!==undefined){
+      this.setData({
+        active: Number(option.active)
+      })
+    }
     myRequest('/wx_user/find_going_morder',null,'GET').then((data)=>{
       this.setData({
         ingList: data

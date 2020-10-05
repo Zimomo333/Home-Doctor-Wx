@@ -1,4 +1,3 @@
-<view>{{consult_id}}</view>
 <view wx:key="index" wx:for="{{ consults }}" style="margin:0 10px 10px 5px;background-color:{{ item.type == 0 ? '#CCFFFF' : '#CCFF99' }}">
   <view wx:if="{{ item.type == 0 }}">
     <text>{{doctor_name}}：</text>
@@ -12,17 +11,19 @@
   </rich-text>
 </view>
 
+<view style="margin-top:20px;"></view>
+<van-cell-group>
+  <van-field label="评价" type="textarea" autosize value="{{ comment }}" placeholder="请输入评价" bind:input="onChangeComment"/>
+</van-cell-group>
+
 <van-rate
   value="{{ rate }}"
   size="{{ 25 }}"
   color="#FFFF00"
   void-color="#eee"
   void-icon="star"
-  bind:change="onChange"
+  bind:change="onChangeRate"
 />
+<view style="margin-top:20px;"></view>
 
-<van-cell-group>
-  <van-field label="评价" type="textarea" autosize model:value="{{ comment }}" placeholder="请输入评价"/>
-</van-cell-group>
-
-<van-button style="width:100%;position:fixed;bottom:0;" type="primary" size="large" bind:click="">提交评价</van-button>
+<van-button style="width:100%;margin-top:50px;" type="primary" size="large" bind:click="clickCommit">提交评价</van-button>

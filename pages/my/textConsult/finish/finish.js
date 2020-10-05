@@ -1,28 +1,30 @@
+import myRequest from '../../../../utils/request'
+
 Page({
   data: {
     consult_id: '',
-    doctor_name: '钟南山',
-    comment: '整挺好！',
-    rate: 3,
-    consults: [
-      {
-        type: 1,
-        time: '2020-09-20 20:27',
-        content: '<h3>I am doctor</h3>'
-      },
-      {
-        type: 0,
-        time: '2020-09-20 20:27',
-        content: '<h3>I am patient</h3>'
-      },
-    ]
+    doctor_name: '',
+    comment: '',
+    rate: '',
+    consults: []
   },
   onLoad(options) {
     this.setData({ consult_id: options.id})
-  },
-  onChange(event) {
-    this.setData({
-      rate: event.detail,
-    });
-  },
+    myRequest('/wx_user/show_morder',{id:options.id},'GET').then((data)=>{
+      var first = {
+        type: 1,
+        time: data.beginTime,
+        content: data.content
+      };
+      this.setData({
+        consults: this.data.consults.concat(first),
+        doctor_name: data.realName
+      })
+      return myRequest('/wx_user/get_morder_message',{id:options.id},'GET')
+    }).then((data)=>{
+      this.setData({
+        consults: this.data.consults.concat(data)
+      })
+    })
+  }
 })

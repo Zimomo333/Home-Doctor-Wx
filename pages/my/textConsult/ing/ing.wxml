@@ -43,6 +43,6 @@
 </mp-dialog>
 
 <van-goods-action>
-  <van-goods-action-button text="确认订单" type="warning" bind:click="" />
+  <van-goods-action-button text="确认订单" type="warning" bind:click="clickConfirm" />
   <van-goods-action-button text="提交咨询" bind:click="clickCommit" />
 </van-goods-action>

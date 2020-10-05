@@ -1,28 +1,48 @@
+import myRequest from '../../../../utils/request'
+
 Page({
   data: {
     consult_id: '',
-    doctor_name: '钟南山',
+    doctor_name: '',
     comment: '',
-    rate: 3,
-    consults: [
-      {
-        type: 1,
-        time: '2020-09-20 20:27',
-        content: '<h3>I am doctor</h3><img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" />'
-      },
-      {
-        type: 0,
-        time: '2020-09-20 20:27',
-        content: '<h3>I am patient</h3>'
-      },
-    ]
+    rate: 5,
+    consults: []
   },
   onLoad(options) {
     this.setData({ consult_id: options.id})
+    myRequest('/wx_user/show_morder',{id:options.id},'GET').then((data)=>{
+      var first = {
+        type: 1,
+        time: data.beginTime,
+        content: data.content
+      };
+      this.setData({
+        consults: this.data.consults.concat(first),
+        doctor_name: data.realName
+      })
+      return myRequest('/wx_user/get_morder_message',{id:options.id},'GET')
+    }).then((data)=>{
+      this.setData({
+        consults: this.data.consults.concat(data)
+      })
+    })
   },
-  onChange(event) {
+  onChangeRate(event) {
     this.setData({
       rate: event.detail,
     });
+  },
+  onChangeComment(event){
+    this.setData({
+      comment: event.detail
+    });
+  },
+  clickCommit(){
+    myRequest('/wx_user/evalute_morder',{id:this.data.consult_id,content:this.data.comment,star:this.data.rate},'POST').then(()=>{
+      console.log('评价成功');
+      wx.navigateTo({
+        url: '/pages/my/textConsult/textConsult?active=2'
+      })
+    })
   }
 })
