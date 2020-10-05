@@ -56,11 +56,6 @@ Page({
     const that = this
     wx.createSelectorQuery().select('#editor').context(function (res) {
       that.editorCtx = res.context
-
-      if (wx.getStorageSync("content")) { // 设置~历史值
-        that.editorCtx.insertText(wx.getStorageSync("content")) // 注意：插入的是对象
-      }
-      
     }).exec()
   },
   // 失去焦点

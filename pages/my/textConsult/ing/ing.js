@@ -43,14 +43,13 @@ Page({
       keyboardHeight = res.height
       setTimeout(() => {
         wx.pageScrollTo({
-          scrollTop: 0,
+          scrollTop: 99999,
           success() {
             that.updatePosition(keyboardHeight)
             that.editorCtx.scrollIntoView()
           }
         })
       }, duration)
-
     })
   },
   updatePosition(keyboardHeight) {
@@ -71,11 +70,6 @@ Page({
     const that = this
     wx.createSelectorQuery().select('#editor').context(function (res) {
       that.editorCtx = res.context
-
-      if (wx.getStorageSync("content")) { // 设置~历史值
-        that.editorCtx.insertText(wx.getStorageSync("content")) // 注意：插入的是对象
-      }
-      
     }).exec()
   },
   // 失去焦点
@@ -96,6 +90,7 @@ Page({
   },
   // 获取内容
   clickCommit(e) {
+    var that = this
     this.editorCtx.getContents({
       success: function(res) {
         var local_list = []   // 本地缓存图片路径
@@ -111,15 +106,15 @@ Page({
           promise_list.push(
             new Promise((resolve,reject)=> {
                 wx.uploadFile({
-                  url: 'http://139.9.182.180:7300/mock/5f43486c2f2f585f01ffb7cf/example/upload',
+                  url: 'https://www.qnm.green:8080/wx_user/upload_image',
                   filePath: local_url,
                   name: 'file',
                   header: {
-                    'Authorization': 'test123'
+                    'token': wx.getStorageSync("token")
                   },
                   success: function (res) {
-                    // remote_list.push(JSON.parse(res.data).img)  Promise.all里的Promise是异步调用的，在此push无法保证图片顺序
-                    resolve(JSON.parse(res.data).img)
+                    // remote_list.push(JSON.parse(res.data).img)  Promisconsult_e.all里的Promise是异步调用的，在此push无法保证图片顺序
+                    resolve(JSON.parse(res.data).data)
                   }
                 })
             })
@@ -130,7 +125,10 @@ Page({
           new_html = res.html.replace(/<img src="(.+?)"/g,() => {
             return '<img src="'+remote_list.shift()+'"';
           })
-          console.log(new_html)
+          return myRequest('/wx_user/reply_morder_message',{id:that.data.consult_id,content:new_html,type:1},'POST')
+        }).then(()=>{
+          that.clear();
+          that.onLoad({id:that.data.consult_id});
         })
       }
     })
