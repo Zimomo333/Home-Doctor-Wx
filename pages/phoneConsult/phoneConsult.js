@@ -1,4 +1,5 @@
 let time = require('../../utils/util');
+import myRequest from '../../utils/request'
 
 Page({
 
@@ -50,6 +51,18 @@ Page({
     });
   },
   onClickCommit(){
-    
+    myRequest('/wx_user/publish_porder',
+      {
+        id:this.data.doctor_id,
+        price:this.data.price,
+        phone:this.data.phone,
+        freeTime:this.data.date
+      },
+    'POST').then(()=>{
+      console.log('提交成功！')
+      wx.navigateTo({
+        url: '/pages/my/phoneConsult/phoneConsult'
+      })
+    })
   }
 })
