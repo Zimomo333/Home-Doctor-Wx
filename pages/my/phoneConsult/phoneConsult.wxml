@@ -1,21 +1,23 @@
 <van-tabs active="{{ active }}" animated swipeable>
   <van-tab title="进行中">
     <van-cell-group>
-      <van-cell wx:key="index" wx:for="{{ ingList }}" title="{{item.doctor_name}}" link-type="navigateTo" url="/pages/my/phoneConsult/ing/ing?id={{item.id}}" is-link center use-label-slot>
+      <van-cell wx:key="index" wx:for="{{ ingList }}" title="{{item.realName}}" link-type="navigateTo" url="/pages/my/phoneConsult/ing/ing?id={{item.id}}" is-link center use-label-slot>
         <view slot="label">
-          <text>预约日期：{{item.date}}</text>
+          <text>预约日期：
+          {{item.freedTime}}</text>
         </view>
         <view style="margin-right:20px;">
-          <text style="font-size:15px;">￥15</text>
+          <text style="font-size:15px;">￥{{item.price}}</text>
         </view>
       </van-cell>
     </van-cell-group>
   </van-tab>
   <van-tab title="待评价">
     <van-cell-group>
-      <van-cell wx:key="index" wx:for="{{ ingList }}" title="{{item.doctor_name}}" link-type="navigateTo" url="/pages/my/phoneConsult/waitComment/waitComment?id={{item.id}}" is-link center use-label-slot>
+      <van-cell wx:key="index" wx:for="{{ ingList }}" title="{{item.realName}}" link-type="navigateTo" url="/pages/my/phoneConsult/waitComment/waitComment?id={{item.id}}" is-link center use-label-slot>
         <view slot="label">
-          <text>预约日期：{{item.date}}</text>
+          <text>预约日期：
+          {{item.freedTime}}</text>
         </view>
         <view style="margin-right:20px;">
           <text style="font-size:15px;">￥{{item.price}}</text>
@@ -25,9 +27,10 @@
   </van-tab>
   <van-tab title="已完成">
     <van-cell-group>
-      <van-cell wx:key="index" wx:for="{{ ingList }}" title="{{item.doctor_name}}" link-type="navigateTo" url="/pages/my/phoneConsult/finish/finish?id={{item.id}}" is-link center use-label-slot>
+      <van-cell wx:key="index" wx:for="{{ ingList }}" title="{{item.realName}}" link-type="navigateTo" url="/pages/my/phoneConsult/finish/finish?id={{item.id}}" is-link center use-label-slot>
         <view slot="label">
-          <text>预约日期：{{item.date}}</text>
+          <text>预约日期：
+          {{item.freedTime}}</text>
         </view>
         <view style="margin-right:20px;">
           <text style="font-size:15px;">￥{{item.price}}</text>
