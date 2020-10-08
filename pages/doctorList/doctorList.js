@@ -36,7 +36,17 @@ Page({
     this.selectComponent('#item').toggle();
     this.setData({ 
       areaCode: values[1].code,
-      areaName: values[1].name
+      areaName: values[1].name,
+      page: 1,
+      sort: 0
+    });
+    myRequest('/wx_user/find_place_doctor',{department:this.data.department,page:1,city:values[1].name},'GET').then((data)=>{
+      data.forEach((doctor)=>{
+        doctor.goodcommonts=(doctor.goodcommonts/doctor.allcommonts*5).toFixed(2)
+      })
+      this.setData({
+        doctors: data
+      })
     })
   },
   areaCancel() {
@@ -63,7 +73,9 @@ Page({
   onClickChange(e){
     this.setData({
       sort: e.detail,
-      page: 1
+      page: 1,
+      areaName: '全国',
+      areaCode: '100100'
     })
     switch(e.detail){
       case 0:{
