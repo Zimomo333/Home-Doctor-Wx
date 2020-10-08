@@ -18,7 +18,8 @@ Page({
     areaList: area,
     areaName: '全国',
     areaCode: '100100',
-    doctors: []
+    doctors: [],
+    sortUrlOptions: ['find_doctor_by_department','find_goodCommonts_doctor','find_services_doctor','find_priceasc_doctor','find_pricedesc_doctor']
   },
   onLoad(options) {
     this.setData({ department: options.department})
@@ -47,7 +48,7 @@ Page({
     })
   },
   onReachBottom(){    //上拉懒加载
-    myRequest('/wx_user/find_doctor_by_department',{department:this.data.department,page:this.data.page+1},'GET').then((data)=>{
+    myRequest('/wx_user/'+this.data.sortUrlOptions[this.data.sort],{department:this.data.department,page:this.data.page+1},'GET').then((data)=>{
       if(data.length != 0){   // 判断是否已经没数据了
         data.forEach((doctor)=>{
           doctor.goodcommonts=(doctor.goodcommonts/doctor.allcommonts*5).toFixed(2)
@@ -58,5 +59,68 @@ Page({
         })
       }
     })
+  },
+  onClickChange(e){
+    this.setData({
+      sort: e.detail,
+      page: 1
+    })
+    switch(e.detail){
+      case 0:{
+        myRequest('/wx_user/find_doctor_by_department',{department:this.data.department,page:1},'GET').then((data)=>{
+          data.forEach((doctor)=>{
+            doctor.goodcommonts=(doctor.goodcommonts/doctor.allcommonts*5).toFixed(2)
+          })
+          this.setData({
+            doctors: data
+          })
+        });
+        break;
+      }
+      case 1:{
+        myRequest('/wx_user/find_goodCommonts_doctor',{department:this.data.department,page:1},'GET').then((data)=>{
+          data.forEach((doctor)=>{
+            doctor.goodcommonts=(doctor.goodcommonts/doctor.allcommonts*5).toFixed(2)
+          })
+          this.setData({
+            doctors: data
+          })
+        });
+        break;
+      }
+      case 2:{
+        myRequest('/wx_user/find_services_doctor',{department:this.data.department,page:1},'GET').then((data)=>{
+          data.forEach((doctor)=>{
+            doctor.goodcommonts=(doctor.goodcommonts/doctor.allcommonts*5).toFixed(2)
+          })
+          this.setData({
+            doctors: data
+          })
+        });
+        break;
+      }
+      case 3:{
+        myRequest('/wx_user/find_priceasc_doctor',{department:this.data.department,page:1},'GET').then((data)=>{
+          data.forEach((doctor)=>{
+            doctor.goodcommonts=(doctor.goodcommonts/doctor.allcommonts*5).toFixed(2)
+          })
+          this.setData({
+            doctors: data
+          })
+        });
+        break;
+      }
+      case 4:{
+        myRequest('/wx_user/find_pricedesc_doctor',{department:this.data.department,page:1},'GET').then((data)=>{
+          data.forEach((doctor)=>{
+            doctor.goodcommonts=(doctor.goodcommonts/doctor.allcommonts*5).toFixed(2)
+          })
+          this.setData({
+            doctors: data
+          })
+        });
+        break;
+      }
+    }
   }
 })
