@@ -14,7 +14,7 @@
   </van-tab>
   <van-tab title="待评价">
     <van-cell-group>
-      <van-cell wx:key="index" wx:for="{{ ingList }}" title="{{item.realName}}" link-type="navigateTo" url="/pages/my/phoneConsult/waitComment/waitComment?id={{item.id}}" is-link center use-label-slot>
+      <van-cell wx:key="index" wx:for="{{ waitCommentList }}" title="{{item.realName}}" link-type="navigateTo" url="/pages/my/phoneConsult/waitComment/waitComment?id={{item.id}}" is-link center use-label-slot>
         <view slot="label">
           <text>预约日期：
           {{item.freedTime}}</text>
@@ -27,7 +27,7 @@
   </van-tab>
   <van-tab title="已完成">
     <van-cell-group>
-      <van-cell wx:key="index" wx:for="{{ ingList }}" title="{{item.realName}}" link-type="navigateTo" url="/pages/my/phoneConsult/finish/finish?id={{item.id}}" is-link center use-label-slot>
+      <van-cell wx:key="index" wx:for="{{ finishList }}" title="{{item.realName}}" link-type="navigateTo" url="/pages/my/phoneConsult/finish/finish?id={{item.id}}" is-link center use-label-slot>
         <view slot="label">
           <text>预约日期：
           {{item.freedTime}}</text>
