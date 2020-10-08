@@ -16,7 +16,8 @@
     "pages/my/textConsult/finish/finish",
     "pages/my/phoneConsult/ing/ing",
     "pages/my/phoneConsult/finish/finish",
-    "pages/my/phoneConsult/waitComment/waitComment"
+    "pages/my/phoneConsult/waitComment/waitComment",
+    "pages/doctorList/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",

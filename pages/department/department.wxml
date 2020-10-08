@@ -1,7 +1,8 @@
 <!--pages/department/department.wxml-->
 <van-search
-  value="{{ value }}"
+  model:value="{{ keyword }}"
   placeholder="疾病、医院、科室、医生名"
+  bind:search="onSearch"
 />
 <van-grid column-num="3" gutter="{{ 10 }}">
   <van-grid-item

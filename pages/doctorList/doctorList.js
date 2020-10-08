@@ -6,7 +6,7 @@ Page({
   data: {
     page:1,
     department: '',
-    search: '',
+    keyword: '',
     sortOption: [
       { text: '默认排序', value: 0 },
       { text: '星级评分', value: 1 },
@@ -134,5 +134,10 @@ Page({
         break;
       }
     }
+  },
+  onSearch() {
+    wx.navigateTo({
+      url: '/pages/doctorList/search/search?keyword=' + this.data.keyword
+    })
   }
 })

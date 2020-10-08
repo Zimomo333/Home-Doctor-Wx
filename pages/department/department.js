@@ -2,7 +2,7 @@
 Page({
   data: {
     active: 1,
-    value: '',
+    keyword: '',
     list: [
       {
         "url": "/pages/index/index",
@@ -71,5 +71,10 @@ Page({
     wx.switchTab({
       url: this.data.list[event.detail].url
     });
+  },
+  onSearch() {
+    wx.navigateTo({
+      url: '/pages/doctorList/search/search?keyword=' + this.data.keyword
+    })
   }
 })

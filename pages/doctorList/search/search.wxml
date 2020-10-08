@@ -1,19 +1,4 @@
-<!--pages/doctorList/doctorList.wxml-->
 <van-search model:value="{{ keyword }}" placeholder="疾病、医院、科室、医生名" bind:search="onSearch"/>
-<van-dropdown-menu>
-  <van-dropdown-item value="{{ sort }}" options="{{ sortOption }}" bind:change="onClickChange"/>
-  <van-dropdown-item id="item" title="{{ areaName }}" >
-    <van-area
-      area-list="{{ areaList }}"
-      columns-num="{{ 2 }}"
-      title="省份城市"
-      value="{{ areaSelect }}"
-      bind:confirm="areaConfirm"
-      bind:cancel="areaCancel"
-    />
-  </van-dropdown-item>
-</van-dropdown-menu>
-<text>{{ department }}</text>
 <van-card
   desc="{{item.province}}　{{item.hospital}}"
   title="{{ item.realName }}"
