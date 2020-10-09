@@ -9,6 +9,7 @@ Page({
   data: {
     price: '',
     doctor_id: '',
+    doctor_name: '',
     date: '',
     phone: '',
     showDatePicker: false,
@@ -33,7 +34,8 @@ Page({
   onLoad(options) {
     this.setData({
       doctor_id: options.doctor_id,
-      price: options.price
+      price: options.price,
+      doctor_name: options.name
     })
   },
   showDatePicker() {
@@ -60,6 +62,10 @@ Page({
       },
     'POST').then(()=>{
       console.log('提交成功！')
+      wx.requestSubscribeMessage({
+        tmplIds: ['BVdsgAaSGBIdxJp3gsklODSO9JKUHKm4QwmsFmhnELE'],
+        success (res) {console.log(res);}
+      })
       wx.navigateTo({
         url: '/pages/my/phoneConsult/phoneConsult'
       })

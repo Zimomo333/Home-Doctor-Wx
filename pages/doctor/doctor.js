@@ -38,7 +38,7 @@ Page({
   },
   onClickPhone() {
     wx.navigateTo({
-      url: '/pages/phoneConsult/phoneConsult?doctor_id=' + this.data.doctor_id + '&price=' + this.data.doctorInfo.porderPrice
+      url: '/pages/phoneConsult/phoneConsult?doctor_id=' + this.data.doctor_id + '&price=' + this.data.doctorInfo.porderPrice + '&name=' +　this.data.doctorInfo.realName
     })
   }
 })
