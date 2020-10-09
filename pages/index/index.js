@@ -70,4 +70,9 @@ Page({
       }
     })
   },
+  jump(event){
+    wx.navigateTo({
+      url: '/pages/article/article?id=' + event.currentTarget.id
+    })
+  }
 })

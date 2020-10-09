@@ -1,0 +1,10 @@
+<!--pages/article/article.wxml-->
+<view style="margin-bottom:15px;text-align:center;">
+  <text style="font-weight:bolder;font-size:25px;">{{title}}</text>
+</view>
+<rich-text nodes="{{content}}">
+</rich-text>
+<view style="margin:0px 15px 15px 15px;">
+  <text style="color:gray;">{{time}}　浏览：{{watchs}}　点赞：{{likes}}　</text>
+  <van-icon name="{{icon_like}}" color="red" size="25px" style="margin-left:3px;" bind:click="onClickLike"/>
+</view>

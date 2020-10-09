@@ -9,8 +9,10 @@
 <van-card
   wx:for="{{articleList}}"
   wx:key="index"
+  id="{{item.id}}"
   thumb="{{ item.coverImage }}"
   tag="{{ item.type }}"
+  bindtap="jump"
 >
   <view slot="title" style="margin-top:10px;float:right;">
     <text style="font-weight:bolder;font-size:15px">{{item.title}}</text>

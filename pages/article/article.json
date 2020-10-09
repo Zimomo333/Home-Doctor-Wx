@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "健康资讯",
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index"
+  }
+}
