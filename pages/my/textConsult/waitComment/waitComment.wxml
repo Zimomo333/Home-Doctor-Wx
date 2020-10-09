@@ -27,3 +27,5 @@
 <view style="margin-top:20px;"></view>
 
 <van-button style="width:100%;margin-top:50px;" type="primary" size="large" bind:click="clickCommit">提交评价</van-button>
+
+<van-toast id="van-toast" />

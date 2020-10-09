@@ -29,3 +29,5 @@
 
 <mp-dialog title="确认清空所有内容？" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{ [{text: '取消'}, {text: '确定'}] }}">
 </mp-dialog>
+
+<van-toast id="van-toast" />

@@ -3,6 +3,7 @@
   "usingComponents": {
     "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog",
     "van-goods-action": "@vant/weapp/goods-action/index",
-    "van-goods-action-button": "@vant/weapp/goods-action-button/index"
+    "van-goods-action-button": "@vant/weapp/goods-action-button/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }

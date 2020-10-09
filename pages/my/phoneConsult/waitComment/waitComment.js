@@ -1,4 +1,6 @@
 import myRequest from '../../../../utils/request'
+import Toast from '../../../../miniprogram_npm/@vant/weapp/toast/toast'
+import delay from '../../../../utils/delay'
 Page({
   data: {
     consult_id: '',
@@ -25,9 +27,11 @@ Page({
   },
   onClickCommit(){
     myRequest('/wx_user/evalute_porder',{id:this.data.consult_id,content:this.data.comment,star:this.data.rate},'POST').then(()=>{
-      console.log('评价成功！');
-      wx.navigateTo({
-        url: '/pages/my/phoneConsult/phoneConsult?active=2'
+      Toast.success('评价成功！');
+      delay(1000).then(()=>{
+        wx.navigateTo({
+          url: '/pages/my/phoneConsult/phoneConsult?active=2'
+        })
       })
     })
   }

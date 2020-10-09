@@ -2,6 +2,7 @@
   "navigationBarTitleText": "图文问诊",
   "usingComponents": {
     "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog",
-    "van-button": "@vant/weapp/button/index"
+    "van-button": "@vant/weapp/button/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }

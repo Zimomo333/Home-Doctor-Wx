@@ -1,6 +1,8 @@
 <van-cell-group>
   <van-field label="医生姓名" type="text" model:value="{{ doctor_name }}" readonly/>
-  <van-field label="预约日期" bind:focus="showDatePicker" model:value="{{ tempDate }}" placeholder="请选择预约日期" />
+  <van-field label="预约日期" value="{{ tempDate }}" placeholder="请选择预约日期" use-button-slot readonly>
+    <van-button slot="button" size="small" type="primary" bind:click="showDatePicker" >选日期</van-button>
+  </van-field>
   <van-field label="手机号码" type="number" model:value="{{ phone }}" placeholder="请输入手机号码"/>
 </van-cell-group>
 <van-button style="width:100%;position:fixed;bottom:0;" type="primary" size="large" bind:click="onClickCommit">提交</van-button>
@@ -16,3 +18,5 @@
     formatter="{{ formatter }}"
   />
 </van-popup>
+
+<van-toast id="van-toast" />

@@ -1,5 +1,7 @@
 let time = require('../../utils/util');
 import myRequest from '../../utils/request'
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import delay from '../../utils/delay'
 
 Page({
 
@@ -61,13 +63,15 @@ Page({
         freeTime:this.data.date
       },
     'POST').then(()=>{
-      console.log('提交成功！')
-      wx.requestSubscribeMessage({
-        tmplIds: ['BVdsgAaSGBIdxJp3gsklODSO9JKUHKm4QwmsFmhnELE'],
-        success (res) {console.log(res);}
-      })
-      wx.navigateTo({
-        url: '/pages/my/phoneConsult/phoneConsult'
+      Toast.success('提交成功！');
+      delay(1000).then(()=>{
+        wx.requestSubscribeMessage({
+          tmplIds: ['BVdsgAaSGBIdxJp3gsklODSO9JKUHKm4QwmsFmhnELE'],
+          success (res) {console.log(res);}
+        })
+        wx.navigateTo({
+          url: '/pages/my/phoneConsult/phoneConsult'
+        })
       })
     })
   }

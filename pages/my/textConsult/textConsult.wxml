@@ -41,3 +41,5 @@
     </van-cell-group>
   </van-tab>
 </van-tabs>
+
+<van-toast id="van-toast" />

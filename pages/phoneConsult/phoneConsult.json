@@ -4,6 +4,7 @@
     "van-field": "@vant/weapp/field/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-button": "@vant/weapp/button/index"
+    "van-button": "@vant/weapp/button/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }

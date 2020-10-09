@@ -1,5 +1,6 @@
 import myRequest from '../../../../utils/request'
-
+import Toast from '../../../../miniprogram_npm/@vant/weapp/toast/toast'
+import delay from '../../../../utils/delay'
 Page({
   data: {
     formats: {},
@@ -127,7 +128,10 @@ Page({
           })
           return myRequest('/wx_user/reply_morder_message',{id:that.data.consult_id,content:new_html,type:1},'POST')
         }).then(()=>{
-          console.log('回复成功！')
+          Toast.success('回复成功！');
+          that.setData({
+            consults: []
+          })
           that.clear();
           that.onLoad({id:that.data.consult_id});
         })
@@ -192,9 +196,11 @@ Page({
   },
   clickConfirm() {
     myRequest('/wx_user/confirm_morder',{id:this.data.consult_id},'GET').then(()=>{
-      console.log('确认订单成功！')
-      wx.navigateTo({
-        url: '/pages/my/textConsult/textConsult?active=1'
+      Toast.success('确认成功！');
+      delay(1000).then(()=>{
+        wx.navigateTo({
+          url: '/pages/my/textConsult/textConsult?active=1'
+        })
       })
     })
   }

@@ -1,4 +1,6 @@
 import myRequest from '../../utils/request'
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import delay from '../../utils/delay'
 
 Page({
   data: {
@@ -121,8 +123,11 @@ Page({
           })
           return myRequest('/wx_user/publish_morder',{id:that.data.doctor_id,price:that.data.price,content:new_html},'POST')
         }).then(()=>{
-          wx.navigateTo({
-            url: '/pages/my/textConsult/textConsult'
+          Toast.success('提交成功！');
+          delay(1000).then(()=>{
+            wx.navigateTo({
+              url: '/pages/my/textConsult/textConsult'
+            })
           })
         })
       }
