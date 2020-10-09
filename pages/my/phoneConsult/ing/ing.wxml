@@ -6,3 +6,4 @@
 <van-button style="width:100%;position:fixed;bottom:0;" type="primary" size="large" bind:click="onClickCommit">确认订单</van-button>
 
 <van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

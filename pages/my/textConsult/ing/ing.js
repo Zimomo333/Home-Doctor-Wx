@@ -1,6 +1,8 @@
 import myRequest from '../../../../utils/request'
 import Toast from '../../../../miniprogram_npm/@vant/weapp/toast/toast'
 import delay from '../../../../utils/delay'
+import Dialog from '../../../../miniprogram_npm/@vant/weapp/dialog/dialog';
+
 Page({
   data: {
     formats: {},
@@ -195,13 +197,21 @@ Page({
     })
   },
   clickConfirm() {
-    myRequest('/wx_user/confirm_morder',{id:this.data.consult_id},'GET').then(()=>{
-      Toast.success('确认成功！');
-      delay(1000).then(()=>{
-        wx.navigateTo({
-          url: '/pages/my/textConsult/textConsult?active=1'
+    Dialog.confirm({
+      title: '确认订单',
+      message: '是否需要确认订单？',
+    }).then(() => {
+      myRequest('/wx_user/confirm_morder',{id:this.data.consult_id},'GET').then(()=>{
+        Toast.success('确认成功！');
+        delay(1000).then(()=>{
+          wx.navigateTo({
+            url: '/pages/my/textConsult/textConsult?active=1'
+          })
         })
       })
     })
+    .catch(() => {
+      // on cancel
+    });
   }
 })
