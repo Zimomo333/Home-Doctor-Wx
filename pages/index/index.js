@@ -1,13 +1,11 @@
 //index.js
 //获取应用实例
 const app = getApp()
+import myRequset from '../../utils/request'
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    page: 1,
     active: 0,
     list: [
       {
@@ -25,59 +23,51 @@ Page({
         "icon": "contact",
         "text": "我的"
       }
-    ]
+    ],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    interval: 3000,
+    duration: 500,
+    swiperList: [{
+      url: '/picture/1.jpg'
+    }, {
+      url: '/picture/2.jpg'
+    }, {
+      url: '/picture/3.jpg'
+    }, {
+      url: '/picture/4.jpg'
+    }, {
+      url: '/picture/5.jpg'
+    }],
+    articleList: []
   },
   onLoad() {
     const page = getCurrentPages().pop();
     this.setData({
    　  active: this.data.list.findIndex(item => item.url === `/${page.route}`)  //正则匹配当前页的索引
     });
+    myRequset('/wx_user/getHealthyAbouts',{page:1},'GET').then((data)=>{
+      data.forEach(item=> item.time = item.time.slice(0,10));
+      this.setData({
+        articleList: data
+      })
+    })
   },
   onChange(event) {
     wx.switchTab({
       url: this.data.list[event.detail].url
     });
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+  onReachBottom(){    //上拉懒加载
+    myRequset('/wx_user/getHealthyAbouts',{page:this.data.page+1},'GET').then((data)=>{
+      if(data.length != 0){   // 判断是否已经没数据了
+        data.forEach(item=> item.time = item.time.slice(0,10));
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+          page:this.data.page+1,
+          articleList: this.data.articleList.concat(data)
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
     })
-  }
+  },
 })

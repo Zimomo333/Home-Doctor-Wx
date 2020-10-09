@@ -1,18 +1,30 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000" style="height:190px;">
+  <block wx:for="{{swiperList}}" wx:key="index">
+    <swiper-item>
+      <image src="{{item.url}}"></image>
+    </swiper-item>
+  </block>
+</swiper>
+<van-card
+  wx:for="{{articleList}}"
+  wx:key="index"
+  thumb="{{ item.coverImage }}"
+  tag="{{ item.type }}"
+>
+  <view slot="title" style="margin-top:10px;float:right;">
+    <text style="font-weight:bolder;font-size:15px">{{item.title}}</text>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view slot="price" style="float:left;">
+    <text>　浏览：{{item.watchs}}　点赞：{{item.likes}}</text>
   </view>
-  <van-tabbar active="{{ active }}" bind:change="onChange">
-    <van-tabbar-item wx:for="{{ list }}" wx:key="index" icon="{{ item.icon }}" name="{{ item.name }}">
-      {{item.text}}
-    </van-tabbar-item>
-  </van-tabbar>
-</view>
+  <view slot="num" style="float:right;">
+    <text>{{item.time}}</text>
+  </view>
+</van-card>
+<view style="margin-bottom:30px;">　</view>
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item wx:for="{{ list }}" wx:key="index" icon="{{ item.icon }}" name="{{ item.name }}">
+    {{item.text}}
+  </van-tabbar-item>
+</van-tabbar>
