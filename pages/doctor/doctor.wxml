@@ -24,6 +24,11 @@
   </view>
 </view>
 <van-goods-action>
-  <van-goods-action-button text="图文问诊 ￥{{doctorInfo.morderPrice}}" type="warning" bind:click="onClickText" />
-  <van-goods-action-button text="电话问诊 ￥{{doctorInfo.porderPrice}}" bind:click="onClickPhone" />
+  <block wx:if="{{doctorInfo.state}}">
+    <van-goods-action-button text="图文问诊 ￥{{doctorInfo.morderPrice}}" type="warning" bind:click="onClickText" />
+    <van-goods-action-button text="电话问诊 ￥{{doctorInfo.porderPrice}}" bind:click="onClickPhone" />
+  </block>
+  <block wx:else>
+    <van-goods-action-button text="暂停问诊" type="danger"/>
+  </block>
 </van-goods-action>
