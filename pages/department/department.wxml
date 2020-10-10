@@ -4,7 +4,7 @@
   placeholder="疾病、医院、科室、医生名"
   bind:search="onSearch"
 />
-<van-grid column-num="3" gutter="{{ 10 }}">
+<van-grid column-num="3" gutter="{{ 10 }}" square>
   <van-grid-item
     content-class="my-grid-item"
     icon="{{ item.icon }}"
