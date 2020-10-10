@@ -97,6 +97,7 @@ Page({
         res.html.replace(/<img src="(.+?)"/g,(a,v) => {
           local_list.push(v);
         })
+        console.log(local_list);
         // 有多少张图就构造多少个 上传图片的异步Promise
         local_list.forEach((local_url) => {
           promise_list.push(
@@ -118,9 +119,11 @@ Page({
         })
         // 待图片全部上传成功，并返回服务器图片路径后，替换掉原文本中的路径
         Promise.all(promise_list).then((remote_list)=>{             // Promise.all里的Promise是异步调用的，但是then中返回的结果有序
+          console.log(remote_list);
           new_html = res.html.replace(/<img src="(.+?)"/g,() => {
             return '<img src="'+remote_list.shift()+'"';
           })
+          console.log(new_html);
           return myRequest('/wx_user/publish_morder',{id:that.data.doctor_id,price:that.data.price,content:new_html},'POST')
         }).then(()=>{
           Toast.success('提交成功！');

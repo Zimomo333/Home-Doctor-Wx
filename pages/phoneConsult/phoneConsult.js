@@ -63,11 +63,12 @@ Page({
       },
     'POST').then(()=>{
       Toast.success('提交成功！');
-      delay(1000).then(()=>{
+      new Promise(resolve=>{
         wx.requestSubscribeMessage({
           tmplIds: ['BVdsgAaSGBIdxJp3gsklODSO9JKUHKm4QwmsFmhnELE'],
-          success (res) {console.log(res);}
+          success (res) {resolve();}
         })
+      }).then(()=>{
         wx.redirectTo({
           url: '/pages/my/phoneConsult/phoneConsult'
         })
