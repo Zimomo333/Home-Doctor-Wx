@@ -125,7 +125,7 @@ Page({
         }).then(()=>{
           Toast.success('提交成功！');
           delay(1000).then(()=>{
-            wx.navigateTo({
+            wx.redirectTo({
               url: '/pages/my/textConsult/textConsult'
             })
           })
@@ -136,14 +136,12 @@ Page({
   insertDivider() {
     this.editorCtx.insertDivider({
       success: function () {
-        console.log('insert divider success')
       }
     })
   },
   clear() {
     this.editorCtx.clear({
       success: function (res) {
-        console.log("clear success")
       }
     })
   },
@@ -183,7 +181,6 @@ Page({
           src: res.tempFilePaths[0],
           width: '80%',
           success: function () {
-            console.log('insert image success')
           }
         })
       }

@@ -1,4 +1,4 @@
-<van-tabs active="{{ active }}" animated swipeable>
+<van-tabs active="{{ active }}" swipeable duration="0.1">
   <van-tab title="进行中">
     <van-cell-group>
       <van-cell wx:key="index" wx:for="{{ ingList }}" title="{{item.realName}}" link-type="navigateTo" url="/pages/my/phoneConsult/ing/ing?id={{item.id}}" is-link center use-label-slot>

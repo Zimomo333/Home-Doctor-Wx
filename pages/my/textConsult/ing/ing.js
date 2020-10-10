@@ -150,7 +150,6 @@ Page({
   clear() {
     this.editorCtx.clear({
       success: function (res) {
-        console.log("clear success")
       }
     })
   },
@@ -190,7 +189,6 @@ Page({
           src: res.tempFilePaths[0],
           width: '80%',
           success: function () {
-            console.log('insert image success')
           }
         })
       }
@@ -204,7 +202,7 @@ Page({
       myRequest('/wx_user/confirm_morder',{id:this.data.consult_id},'GET').then(()=>{
         Toast.success('确认成功！');
         delay(1000).then(()=>{
-          wx.navigateTo({
+          wx.redirectTo({
             url: '/pages/my/textConsult/textConsult?active=1'
           })
         })

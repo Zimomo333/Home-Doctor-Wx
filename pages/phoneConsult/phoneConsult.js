@@ -47,7 +47,6 @@ Page({
     this.setData({ showDatePicker: false });
   },
   onConfirmDatePicker(event) {
-    console.log(event)
     this.setData({
       date: event.detail,
       tempDate: time.formatTimeTwo(event.detail,'Y-M-D h:m'),
@@ -69,7 +68,7 @@ Page({
           tmplIds: ['BVdsgAaSGBIdxJp3gsklODSO9JKUHKm4QwmsFmhnELE'],
           success (res) {console.log(res);}
         })
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/my/phoneConsult/phoneConsult'
         })
       })

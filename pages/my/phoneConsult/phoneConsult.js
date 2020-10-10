@@ -31,5 +31,10 @@ Page({
   },
   onClickButton(){
     console.log('i am button')
+  },
+  onUnload(){
+    wx.switchTab({
+      url: '/pages/my/my'
+    })
   }
 });

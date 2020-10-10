@@ -1,7 +1,7 @@
 <van-cell-group>
   <van-field label="医生姓名" type="text" model:value="{{ doctor_name }}" readonly/>
-  <van-field label="预约日期"  model:value="{{ date }}"  />
-  <van-field label="手机号码" type="number" model:value="{{ phone }}" />
+  <van-field label="预约日期"  model:value="{{ date }}"  readonly/>
+  <van-field label="手机号码" type="number" model:value="{{ phone }}" readonly/>
 </van-cell-group>
 
 <van-rate

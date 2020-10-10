@@ -27,7 +27,7 @@ Page({
       myRequest('/wx_user/confirm_porder',{id:this.data.consult_id},'GET').then(()=>{
         Toast.success('确认成功！');
         delay(1000).then(()=>{
-          wx.navigateTo({
+          wx.redirectTo({
             url: '/pages/my/phoneConsult/phoneConsult?active=1'
           })
         })

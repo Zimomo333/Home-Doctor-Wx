@@ -42,7 +42,7 @@ Page({
     myRequest('/wx_user/evalute_morder',{id:this.data.consult_id,content:this.data.comment,star:this.data.rate},'POST').then(()=>{
       Toast.success('评价成功！');
       delay(1000).then(()=>{
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/my/textConsult/textConsult?active=2'
         })
       })
