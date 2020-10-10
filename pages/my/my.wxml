@@ -6,7 +6,7 @@
 </view>
 
 <van-grid clickable column-num="1">
-  <van-grid-item custom-class="myGrid" icon="comment" bind:click="navigateToText" text="图文问诊" />
+  <van-grid-item custom-class="myGrid" icon="comment" link-type="navigateTo" url="/pages/my/textConsult/textConsult" text="图文问诊" />
   <van-grid-item custom-class="myGrid" icon="chat" link-type="navigateTo" url="/pages/my/phoneConsult/phoneConsult" text="电话问诊" />
   <van-grid-item custom-class="myGrid" icon="manager" link-type="navigateTo" url="/pages/my/healthFile/healthFile" text="健康档案" />
 </van-grid>

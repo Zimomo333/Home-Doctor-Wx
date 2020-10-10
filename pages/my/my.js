@@ -73,14 +73,5 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  },
-  navigateToText(){
-    if(wx.getStorageSync("token")){
-      wx.navigateTo({
-        url: '/pages/my/textConsult/textConsult'
-      })
-    } else {
-      console.log('需要登录')
-    }
   }
 })
