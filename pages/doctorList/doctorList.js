@@ -40,14 +40,25 @@ Page({
       page: 1,
       sort: 0
     });
-    myRequest('/wx_user/find_place_doctor',{department:this.data.department,page:1,city:values[1].name},'GET').then((data)=>{
-      data.forEach((doctor)=>{
-        doctor.goodcommonts=(doctor.goodcommonts/doctor.allcommonts*5).toFixed(2)
+    if(values[1].code!=='100100'){
+      myRequest('/wx_user/find_place_doctor',{department:this.data.department,page:1,city:values[1].name},'GET').then((data)=>{
+        data.forEach((doctor)=>{
+          doctor.goodcommonts=(doctor.goodcommonts/doctor.allcommonts*5).toFixed(2)
+        })
+        this.setData({
+          doctors: data
+        })
       })
-      this.setData({
-        doctors: data
-      })
-    })
+    } else {
+      myRequest('/wx_user/find_doctor_by_department',{department:this.data.department,page:1},'GET').then((data)=>{
+        data.forEach((doctor)=>{
+          doctor.goodcommonts=(doctor.goodcommonts/doctor.allcommonts*5).toFixed(2)
+        })
+        this.setData({
+          doctors: data
+        })
+      });
+    }
   },
   areaCancel() {
     this.selectComponent('#item').toggle();
