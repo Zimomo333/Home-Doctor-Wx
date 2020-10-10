@@ -32,11 +32,11 @@ Page({
         "name": "brain"
       },{
         "icon": "/icon/ear.svg",
-        "text": "耳鼻喉科",
+        "text": "耳科",
         "name": "ear"
       },{
         "icon": "/icon/throat.svg",
-        "text": "咽喉",
+        "text": "咽喉科",
         "name": "throat"
       },{
         "icon": "/icon/heart.svg",
@@ -58,6 +58,18 @@ Page({
         "icon": "/icon/teeth.svg",
         "text": "口腔科",
         "name": "teeth"
+      },{
+        "icon": "/icon/child.svg",
+        "text": "儿科",
+        "name": "child"
+      },{
+        "icon": "/icon/woman.svg",
+        "text": "妇科",
+        "name": "woman"
+      },{
+        "icon": "/icon/nerve.svg",
+        "text": "神经科",
+        "name": "nerve"
       },
     ]
   },

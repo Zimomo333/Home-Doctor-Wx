@@ -13,7 +13,6 @@
     />
   </van-dropdown-item>
 </van-dropdown-menu>
-<text>{{ department }}</text>
 <van-card
   desc="{{item.province}}　{{item.hospital}}"
   title="{{ item.realName }}"
