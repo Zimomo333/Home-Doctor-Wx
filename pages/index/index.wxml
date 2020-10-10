@@ -1,8 +1,8 @@
 <!--index.wxml-->
-<swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000" style="height:190px;">
+<swiper indicator-dots="true" autoplay="true" interval="4000" duration="1000" style="height:190px;">
   <block wx:for="{{swiperList}}" wx:key="index">
     <swiper-item>
-      <image src="{{item.url}}"></image>
+      <image src="{{item.url}}" style="width:100%;"></image>
     </swiper-item>
   </block>
 </swiper>
