@@ -1,7 +1,7 @@
 export default function myRequest(url,data,method){
   return new Promise((resolve,reject) =>{
     wx.request({
-      url: 'https://www.qnm.green:8080'+url,
+      url: 'http://www.zimomo333.com:8080'+url,
       data: data,
       method,
       header: {
