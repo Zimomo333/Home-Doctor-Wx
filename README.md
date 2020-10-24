@@ -16,40 +16,40 @@
 
 1. 首页健康资讯
 
-   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/index.jpg" />
+   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/index.jpg" width="300px" height="500px" />
 
 2. 科室选择
 
-   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/department.jpg" />
+   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/department.jpg" width="300px" height="500px" />
 
 3. 医生列表
 
-   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/doctorList.jpg" />
+   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/doctorList.jpg" width="300px" height="500px" />
 
 4. 医生详情
 
-   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/doctor.jpg" />
+   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/doctor.jpg" width="300px" height="500px" />
 
 5. 图文问诊（富文本编辑器）
 
-   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/richText.jpg" />
+   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/richText.jpg" width="300px" height="500px" />
 
    
 
-   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/reEdit.jpg" />
+   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/reEdit.jpg" width="300px" height="500px" />
 
 6. 医生回复
 
-   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/reply.jpg" />
+   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/reply.jpg" width="300px" height="500px" />
 
 7. 订单列表
 
-   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/orderList.jpg" />
+   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/orderList.jpg" width="300px" height="500px" />
 
 8. 个人中心
 
-   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/my.jpg" />
+   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/my.jpg" width="300px" height="500px" />
 
 9. 健康档案
 
-   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/healthFile.jpg" />
+   <img src="https://raw.githubusercontent.com/Zimomo333/Home-Doctor-Wx/master/picture/healthFile.jpg" width="300px" height="500px" />
